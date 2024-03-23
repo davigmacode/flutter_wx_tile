@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'style.dart';
+import 'types.dart';
 
 /// Defines the visual properties of [ListTile].
 ///
@@ -13,15 +14,34 @@ class WxListTileThemeData extends ThemeExtension<WxListTileThemeData>
   /// The [WxListTileStyle] to be applied to the [ListTile] widget
   final WxListTileStyle style;
 
+  /// Called to build wrapper widget of the list tile
+  final WxListTileBuilder? builder;
+
+  /// Fallback to default builder if [builder] is `null`
+  WxListTileBuilder get effectiveBuilder => builder ?? defaultBuilder();
+
   /// Creates a theme data that can be used for [ListTileTheme].
-  const WxListTileThemeData({required this.style});
+  const WxListTileThemeData({
+    required this.style,
+    this.builder,
+  });
 
   /// An [WxListTileThemeData] with some reasonable default values.
   static const defaults = WxListTileThemeData(style: WxListTileStyle());
 
+  static WxListTileBuilder defaultBuilder() {
+    return (context, child, onTap) {
+      return InkWell(
+        onTap: onTap,
+        child: child,
+      );
+    };
+  }
+
   /// Creates a [WxListTileThemeData] from another one that probably null.
   WxListTileThemeData.from([WxListTileThemeData? other])
-      : style = defaults.style.merge(other?.style);
+      : style = defaults.style.merge(other?.style),
+        builder = other?.builder;
 
   /// A [WxListTileThemeData] with default values.
   factory WxListTileThemeData.fallback(BuildContext context) => defaults;
@@ -29,9 +49,13 @@ class WxListTileThemeData extends ThemeExtension<WxListTileThemeData>
   /// Creates a copy of this [WxListTileThemeData] but with
   /// the given fields replaced with the new values.
   @override
-  WxListTileThemeData copyWith({WxListTileStyle? style}) {
+  WxListTileThemeData copyWith({
+    WxListTileStyle? style,
+    WxListTileBuilder? builder,
+  }) {
     return WxListTileThemeData(
       style: this.style.merge(style),
+      builder: builder ?? this.builder,
     );
   }
 
@@ -43,19 +67,26 @@ class WxListTileThemeData extends ThemeExtension<WxListTileThemeData>
 
     return copyWith(
       style: other.style,
+      builder: other.builder,
     );
   }
 
   @override
   WxListTileThemeData lerp(
-      ThemeExtension<WxListTileThemeData>? other, double t) {
+    ThemeExtension<WxListTileThemeData>? other,
+    double t,
+  ) {
     if (other is! WxListTileThemeData) return this;
     return WxListTileThemeData(
       style: WxListTileStyle.lerp(style, other.style, t) ?? style,
+      builder: other.builder,
     );
   }
 
-  Map<String, dynamic> toMap() => {'style': style};
+  Map<String, dynamic> toMap() => {
+        'style': style,
+        'builder': builder,
+      };
 
   @override
   bool operator ==(Object other) {
