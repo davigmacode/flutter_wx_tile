@@ -12,16 +12,35 @@ class WxTextTile extends StatelessWidget {
     this.margin,
     this.align,
     this.style,
+    required this.title,
+    this.titleStyle,
     this.subtitle,
-    this.title,
+    this.subtitleStyle,
   }) : super(key: key);
 
+  /// {@macro WxTextTile.spacing}
   final double? spacing;
+
+  /// {@macro WxTextTile.margin}
   final EdgeInsetsGeometry? margin;
+
+  /// {@macro WxTextTile.align}
   final WxTextTileAlign? align;
+
+  /// The style to be applied
   final WxTextTileStyle? style;
+
+  /// The primary content
+  final Widget title;
+
+  /// {@macro WxTextTile.titleStyle}
+  final TextStyle? titleStyle;
+
+  /// Additional content displayed below the title.
   final Widget? subtitle;
-  final Widget? title;
+
+  /// {@macro WxTextTile.subtitleStyle}
+  final TextStyle? subtitleStyle;
 
   WxTextTileStyle get effectiveStyle {
     return WxTextTileStyle.from(style).copyWith(
@@ -43,8 +62,16 @@ class WxTextTile extends StatelessWidget {
       spacing: themedStyle.spacing,
       margin: themedStyle.margin,
       crossAxisAlignment: themedStyle.crossAxisAlignment,
-      trailing: subtitle,
-      child: title,
+      trailing: subtitle != null
+          ? DefaultTextStyle.merge(
+              style: subtitleStyle,
+              child: subtitle!,
+            )
+          : null,
+      child: DefaultTextStyle.merge(
+        style: titleStyle,
+        child: title,
+      ),
     );
   }
 
