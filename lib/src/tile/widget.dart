@@ -4,6 +4,7 @@ import 'style.dart';
 import 'theme.dart';
 
 class WxTile extends StatelessWidget {
+  /// Create a basic tile
   const WxTile({
     Key? key,
     this.direction,
@@ -17,25 +18,47 @@ class WxTile extends StatelessWidget {
     this.style,
     this.trailing,
     this.leading,
-    this.child,
+    required this.child,
   }) : super(key: key);
 
+  /// {@macro WxTile.direction}
   final Axis? direction;
+
+  /// {@macro WxTile.crossAxisAlignment}
   final CrossAxisAlignment? crossAxisAlignment;
+
+  /// {@macro WxTile.mainAxisAlignment}
   final MainAxisAlignment? mainAxisAlignment;
+
+  /// {@macro WxTile.mainAxisExpanded}
   final bool? mainAxisExpanded;
+
+  /// {@macro WxTile.childExpanded}
   final bool? childExpanded;
+
+  /// {@macro WxTile.spacingEnforced}
   final bool? spacingEnforced;
+
+  /// {@macro WxTile.spacing}
   final double? spacing;
+
+  /// {@macro WxTile.margin}
   final EdgeInsetsGeometry? margin;
+
+  /// The style to be applied to the tile widget.
   final WxTileStyle? style;
+
+  /// A widget to display before the [child].
   final Widget? leading;
+
+  /// A widget to display after the [child].
   final Widget? trailing;
-  final Widget? child;
+
+  /// The widget below this widget in the tree.
+  final Widget child;
 
   bool get hasLeading => leading != null;
   bool get hasTrailing => trailing != null;
-  bool get hasChild => child != null;
 
   WxTileStyle get effectiveStyle {
     return const WxTileStyle().merge(style).copyWith(
@@ -57,8 +80,8 @@ class WxTile extends StatelessWidget {
 
     final isSpacingEnforced = themedStyle.spacingEnforced;
     final isMainAxisExpanded = themedStyle.mainAxisExpanded;
-    final isChildExpanded =
-        hasChild && isMainAxisExpanded! && themedStyle.childExpanded!;
+    final isChildExpanded = isMainAxisExpanded! && themedStyle.childExpanded!;
+
     final isVertical = themedStyle.direction == Axis.vertical;
     final spacer = SizedBox(
       width: !isVertical ? themedStyle.spacing : null,
@@ -69,11 +92,11 @@ class WxTile extends StatelessWidget {
       direction: themedStyle.direction!,
       mainAxisAlignment: themedStyle.mainAxisAlignment!,
       crossAxisAlignment: themedStyle.crossAxisAlignment!,
-      mainAxisSize: isMainAxisExpanded! ? MainAxisSize.max : MainAxisSize.min,
+      mainAxisSize: isMainAxisExpanded ? MainAxisSize.max : MainAxisSize.min,
       children: [
         leading,
         if (hasLeading || isSpacingEnforced!) spacer,
-        isChildExpanded ? Expanded(child: child!) : child,
+        isChildExpanded ? Expanded(child: child) : child,
         if (hasTrailing || isSpacingEnforced!) spacer,
         trailing,
       ].whereType<Widget>().toList(growable: false),

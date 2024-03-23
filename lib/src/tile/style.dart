@@ -2,16 +2,49 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lerp/lerp.dart';
 
-/// The style to be applied to [Tile] widget
+/// The style to be applied to [WxTile] widget
 @immutable
 class WxTileStyle with Diagnosticable {
+  /// {@template WxTile.direction}
+  /// The direction to use as the main axis.
+  /// {@endtemplate}
   final Axis? direction;
+
+  /// {@template WxTile.margin}
+  /// Outer space around the widget.
+  /// {@endtemplate}
   final EdgeInsetsGeometry? margin;
+
+  /// {@template WxTile.spacing}
+  /// The gap between the [child] and the [leading]/[trailing] widgets.
+  /// {@endtemplate}
   final double? spacing;
+
+  /// {@template WxTile.spacingEnforced}
+  /// Determines if spacing should be enforced
+  /// between the child and leading/trailing widgets,
+  /// even when leading/trailing widgets are absent.
+  /// {@endtemplate}
   final bool? spacingEnforced;
+
+  /// {@template WxTile.crossAxisAlignment}
+  /// How the children should be placed along the cross axis.
+  /// {@endtemplate}
   final CrossAxisAlignment? crossAxisAlignment;
+
+  /// {@template WxTile.mainAxisAlignment}
+  /// How the children should be placed along the main axis.
+  /// {@endtemplate}
   final MainAxisAlignment? mainAxisAlignment;
+
+  /// {@template WxTile.mainAxisExpanded}
+  /// Controls whether to maximize or minimize the amount of free space.
+  /// {@endtemplate}
   final bool? mainAxisExpanded;
+
+  /// {@template WxTile.childExpanded}
+  /// Controls how the child widget fills its available space (expand or wrap content).
+  /// {@endtemplate}
   final bool? childExpanded;
 
   /// Create a raw [WxTileStyle]
