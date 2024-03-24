@@ -38,10 +38,10 @@ class WxListTileStyle with Diagnosticable {
   /// {@endtemplate}
   final MainAxisAlignment? mainAxisAlignment;
 
-  /// {@template WxListTile.mainAxisExpanded}
-  /// Controls whether to maximize or minimize the amount of free space.
+  /// {@template WxListTile.inline}
+  /// Controls whether to minimize or maximize the amount of free space.
   /// {@endtemplate}
-  final bool? mainAxisExpanded;
+  final bool? inline;
 
   /// {@template WxListTile.textExpanded}
   /// Controls how the child widget (title and subtitle)
@@ -78,7 +78,7 @@ class WxListTileStyle with Diagnosticable {
     this.spacingEnforced,
     this.crossAxisAlignment,
     this.mainAxisAlignment,
-    this.mainAxisExpanded,
+    this.inline,
     this.textExpanded,
     this.textAlign,
     this.textSpacing,
@@ -90,14 +90,14 @@ class WxListTileStyle with Diagnosticable {
   const WxListTileStyle.defaults()
       : margin = EdgeInsets.zero,
         padding = EdgeInsets.zero,
-        spacing = 0.0,
+        spacing = 10.0,
         spacingEnforced = true,
         crossAxisAlignment = CrossAxisAlignment.center,
-        mainAxisAlignment = MainAxisAlignment.start,
-        mainAxisExpanded = true,
+        mainAxisAlignment = MainAxisAlignment.spaceBetween,
+        inline = false,
         textExpanded = true,
         textAlign = WxTextTileAlign.left,
-        textSpacing = 0.0,
+        textSpacing = 5.0,
         titleStyle = null,
         subtitleStyle = null;
 
@@ -109,7 +109,7 @@ class WxListTileStyle with Diagnosticable {
         spacingEnforced = other?.spacingEnforced,
         crossAxisAlignment = other?.crossAxisAlignment,
         mainAxisAlignment = other?.mainAxisAlignment,
-        mainAxisExpanded = other?.mainAxisExpanded,
+        inline = other?.inline,
         textExpanded = other?.textExpanded,
         textAlign = other?.textAlign,
         textSpacing = other?.textSpacing,
@@ -125,7 +125,7 @@ class WxListTileStyle with Diagnosticable {
     bool? spacingEnforced,
     CrossAxisAlignment? crossAxisAlignment,
     MainAxisAlignment? mainAxisAlignment,
-    bool? mainAxisExpanded,
+    bool? inline,
     bool? textExpanded,
     WxTextTileAlign? textAlign,
     double? textSpacing,
@@ -139,7 +139,7 @@ class WxListTileStyle with Diagnosticable {
       spacingEnforced: spacingEnforced ?? this.spacingEnforced,
       crossAxisAlignment: crossAxisAlignment ?? this.crossAxisAlignment,
       mainAxisAlignment: mainAxisAlignment ?? this.mainAxisAlignment,
-      mainAxisExpanded: mainAxisExpanded ?? this.mainAxisExpanded,
+      inline: inline ?? this.inline,
       textExpanded: textExpanded ?? this.textExpanded,
       textAlign: textAlign ?? this.textAlign,
       textSpacing: textSpacing ?? this.textSpacing,
@@ -161,7 +161,7 @@ class WxListTileStyle with Diagnosticable {
       spacingEnforced: other.spacingEnforced,
       crossAxisAlignment: other.crossAxisAlignment,
       mainAxisAlignment: other.mainAxisAlignment,
-      mainAxisExpanded: other.mainAxisExpanded,
+      inline: other.inline,
       textExpanded: other.textExpanded,
       textAlign: other.textAlign,
       textSpacing: other.textSpacing,
@@ -186,7 +186,7 @@ class WxListTileStyle with Diagnosticable {
           lerpEnum(a?.crossAxisAlignment, b?.crossAxisAlignment, t),
       mainAxisAlignment:
           lerpEnum(a?.mainAxisAlignment, b?.mainAxisAlignment, t),
-      mainAxisExpanded: lerpBool(a?.mainAxisExpanded, b?.mainAxisExpanded, t),
+      inline: lerpBool(a?.inline, b?.inline, t),
       textExpanded: lerpBool(a?.textExpanded, b?.textExpanded, t),
       textAlign: lerpEnum(a?.textAlign, b?.textAlign, t),
       textSpacing: lerpDouble(a?.textSpacing, b?.textSpacing, t),
@@ -202,7 +202,7 @@ class WxListTileStyle with Diagnosticable {
         'spacingEnforced': spacingEnforced,
         'crossAxisAlignment': crossAxisAlignment,
         'mainAxisAlignment': mainAxisAlignment,
-        'mainAxisExpanded': mainAxisExpanded,
+        'inline': inline,
         'childExpanded': textExpanded,
         'textAlign': textAlign,
         'textSpacing': textSpacing,
