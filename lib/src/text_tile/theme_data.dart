@@ -50,7 +50,9 @@ class WxTextTileThemeData extends ThemeExtension<WxTextTileThemeData>
 
   @override
   WxTextTileThemeData lerp(
-      ThemeExtension<WxTextTileThemeData>? other, double t) {
+    ThemeExtension<WxTextTileThemeData>? other,
+    double t,
+  ) {
     if (other is! WxTextTileThemeData) return this;
     return WxTextTileThemeData(
       style: WxTextTileStyle.lerp(style, other.style, t) ?? style,

@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import '../tile/widget.dart';
 import 'style.dart';
 import 'types.dart';
@@ -52,8 +52,18 @@ class WxTextTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = WxTextTileTheme.of(context);
-    final themedStyle = theme.style.merge(effectiveStyle);
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+    final defaultTitleStyle = textTheme.bodyLarge?.copyWith(
+      color: colorScheme.onSurface,
+    );
+    final defaultSubtitleStyle = textTheme.bodyMedium?.copyWith(
+      color: colorScheme.onSurfaceVariant,
+    );
+
+    final tileTheme = WxTextTileTheme.of(context);
+    final themedStyle = tileTheme.style.merge(effectiveStyle);
     return WxTile(
       direction: Axis.vertical,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -64,12 +74,12 @@ class WxTextTile extends StatelessWidget {
       crossAxisAlignment: themedStyle.crossAxisAlignment,
       trailing: subtitle != null
           ? DefaultTextStyle.merge(
-              style: subtitleStyle,
+              style: subtitleStyle ?? defaultSubtitleStyle,
               child: subtitle!,
             )
           : null,
       child: DefaultTextStyle.merge(
-        style: titleStyle,
+        style: titleStyle ?? defaultTitleStyle,
         child: title,
       ),
     );
