@@ -70,6 +70,11 @@ class WxListTileStyle with Diagnosticable {
   /// {@endtemplate}
   final TextStyle? subtitleStyle;
 
+  /// {@template WxListTile.secondaryStyle}
+  /// The text style to be applied to leading and trailing.
+  /// {@endtemplate}
+  final TextStyle? secondaryStyle;
+
   /// Create a raw [WxListTileStyle]
   const WxListTileStyle({
     this.margin,
@@ -84,6 +89,7 @@ class WxListTileStyle with Diagnosticable {
     this.textSpacing,
     this.titleStyle,
     this.subtitleStyle,
+    this.secondaryStyle,
   });
 
   /// Create a [WxListTileStyle] with some reasonable default values.
@@ -97,9 +103,10 @@ class WxListTileStyle with Diagnosticable {
         inline = false,
         textExpanded = true,
         textAlign = WxTextTileAlign.left,
-        textSpacing = 5.0,
+        textSpacing = 0.0,
         titleStyle = null,
-        subtitleStyle = null;
+        subtitleStyle = null,
+        secondaryStyle = null;
 
   /// Create a [WxListTileStyle] from another style
   WxListTileStyle.from(WxListTileStyle? other)
@@ -114,7 +121,8 @@ class WxListTileStyle with Diagnosticable {
         textAlign = other?.textAlign,
         textSpacing = other?.textSpacing,
         titleStyle = other?.titleStyle,
-        subtitleStyle = other?.subtitleStyle;
+        subtitleStyle = other?.subtitleStyle,
+        secondaryStyle = other?.secondaryStyle;
 
   /// Creates a copy of this [WxListTileStyle] but with
   /// the given fields replaced with the new values.
@@ -131,6 +139,7 @@ class WxListTileStyle with Diagnosticable {
     double? textSpacing,
     TextStyle? titleStyle,
     TextStyle? subtitleStyle,
+    TextStyle? secondaryStyle,
   }) {
     return WxListTileStyle(
       margin: margin ?? this.margin,
@@ -145,6 +154,7 @@ class WxListTileStyle with Diagnosticable {
       textSpacing: textSpacing ?? this.textSpacing,
       titleStyle: titleStyle ?? this.titleStyle,
       subtitleStyle: subtitleStyle ?? this.subtitleStyle,
+      secondaryStyle: secondaryStyle ?? this.secondaryStyle,
     );
   }
 
@@ -167,6 +177,7 @@ class WxListTileStyle with Diagnosticable {
       textSpacing: other.textSpacing,
       titleStyle: other.titleStyle,
       subtitleStyle: other.subtitleStyle,
+      secondaryStyle: other.secondaryStyle,
     );
   }
 
@@ -192,6 +203,7 @@ class WxListTileStyle with Diagnosticable {
       textSpacing: lerpDouble(a?.textSpacing, b?.textSpacing, t),
       titleStyle: TextStyle.lerp(a?.titleStyle, b?.titleStyle, t),
       subtitleStyle: TextStyle.lerp(a?.subtitleStyle, b?.subtitleStyle, t),
+      secondaryStyle: TextStyle.lerp(a?.secondaryStyle, b?.secondaryStyle, t),
     );
   }
 
@@ -208,6 +220,7 @@ class WxListTileStyle with Diagnosticable {
         'textSpacing': textSpacing,
         'titleStyle': titleStyle,
         'subtitleStyle': subtitleStyle,
+        'secondaryStyle': secondaryStyle,
       };
 
   @override

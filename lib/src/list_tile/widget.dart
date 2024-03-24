@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import '../tile/widget.dart';
 import '../text_tile/types.dart';
 import '../text_tile/widget.dart';
@@ -27,6 +27,7 @@ class WxListTile extends StatelessWidget {
     this.textSpacing,
     this.titleStyle,
     this.subtitleStyle,
+    this.secondaryStyle,
     this.style,
     this.onTap,
   }) : super(key: key);
@@ -79,6 +80,9 @@ class WxListTile extends StatelessWidget {
   /// {@macro WxListTile.subtitleStyle}
   final TextStyle? subtitleStyle;
 
+  /// {@macro WxListTile.secondaryStyle}
+  final TextStyle? secondaryStyle;
+
   /// The style to be applied
   final WxListTileStyle? style;
 
@@ -100,13 +104,41 @@ class WxListTile extends StatelessWidget {
       textSpacing: textSpacing,
       titleStyle: titleStyle,
       subtitleStyle: subtitleStyle,
+      secondaryStyle: secondaryStyle,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = WxListTileTheme.of(context);
-    final themedStyle = theme.style.merge(effectiveStyle);
+    final tileTheme = WxListTileTheme.of(context);
+    final themedStyle = tileTheme.style.merge(effectiveStyle);
+
+    TextStyle? effectiveSecondaryStyle = themedStyle.secondaryStyle;
+    if (effectiveSecondaryStyle == null) {
+      if (leading != null || trailing != null) {
+        final theme = Theme.of(context);
+        effectiveSecondaryStyle = theme.textTheme.labelSmall?.copyWith(
+          color: theme.colorScheme.onSurfaceVariant,
+        );
+      }
+    }
+
+    Widget? leadingWidget;
+    if (leading != null) {
+      leadingWidget = DefaultTextStyle.merge(
+        style: effectiveSecondaryStyle,
+        child: leading!,
+      );
+    }
+
+    Widget? trailingWidget;
+    if (trailing != null) {
+      trailingWidget = DefaultTextStyle.merge(
+        style: effectiveSecondaryStyle,
+        child: trailing!,
+      );
+    }
+
     Widget content = WxTile(
       direction: Axis.horizontal,
       margin: themedStyle.padding,
@@ -116,8 +148,8 @@ class WxListTile extends StatelessWidget {
       mainAxisAlignment: themedStyle.mainAxisAlignment,
       inline: themedStyle.inline,
       childExpanded: themedStyle.textExpanded,
-      leading: leading,
-      trailing: trailing,
+      leading: leadingWidget,
+      trailing: trailingWidget,
       child: WxTextTile(
         title: title,
         subtitle: subtitle,
@@ -129,7 +161,7 @@ class WxListTile extends StatelessWidget {
     );
 
     // build gesture wrapper
-    content = theme.effectiveWrapper(
+    content = tileTheme.effectiveWrapper(
       context,
       WxListTileContext(
         onTap: onTap,
