@@ -85,6 +85,16 @@ class WxListTileStyle with Diagnosticable {
   /// {@endtemplate}
   final TextStyle? secondaryStyle;
 
+  /// {@template WxListTile.titleSize}
+  /// The font size to be applied to title.
+  /// {@endtemplate}
+  final double? titleSize;
+
+  /// {@template WxListTile.subtitleSize}
+  /// The font size to be applied to title.
+  /// {@endtemplate}
+  final double? subtitleSize;
+
   /// Create a raw [WxListTileStyle]
   const WxListTileStyle({
     this.margin,
@@ -102,13 +112,18 @@ class WxListTileStyle with Diagnosticable {
     this.titleStyle,
     this.subtitleStyle,
     this.secondaryStyle,
+    this.titleSize,
+    this.subtitleSize,
   });
 
   /// Create a [WxListTileStyle] with some reasonable default values.
   const WxListTileStyle.defaults()
       : margin = EdgeInsets.zero,
-        padding = EdgeInsets.zero,
-        spacing = 10.0,
+        padding = const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 10,
+        ),
+        spacing = 16.0,
         spacingEnforced = true,
         crossAxisAlignment = CrossAxisAlignment.center,
         mainAxisAlignment = MainAxisAlignment.spaceBetween,
@@ -120,7 +135,29 @@ class WxListTileStyle with Diagnosticable {
         iconColor = null,
         titleStyle = null,
         subtitleStyle = null,
-        secondaryStyle = null;
+        secondaryStyle = null,
+        titleSize = null,
+        subtitleSize = null;
+
+  /// Create a [WxListTileStyle] with some reasonable default values.
+  const WxListTileStyle.dense({
+    this.margin,
+    this.spacingEnforced,
+    this.crossAxisAlignment,
+    this.mainAxisAlignment,
+    this.inline,
+    this.textExpanded,
+    this.textAlign,
+    this.textSpacing,
+    this.textColor,
+    this.iconColor,
+    this.titleStyle,
+    this.subtitleStyle,
+    this.secondaryStyle,
+  })  : padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        spacing = 10.0,
+        titleSize = 13.0,
+        subtitleSize = 12.0;
 
   /// Create a [WxListTileStyle] from another style
   WxListTileStyle.from(WxListTileStyle? other)
@@ -138,7 +175,9 @@ class WxListTileStyle with Diagnosticable {
         iconColor = other?.iconColor,
         titleStyle = other?.titleStyle,
         subtitleStyle = other?.subtitleStyle,
-        secondaryStyle = other?.secondaryStyle;
+        secondaryStyle = other?.secondaryStyle,
+        titleSize = other?.titleSize,
+        subtitleSize = other?.subtitleSize;
 
   /// Creates a copy of this [WxListTileStyle] but with
   /// the given fields replaced with the new values.
@@ -158,6 +197,8 @@ class WxListTileStyle with Diagnosticable {
     TextStyle? titleStyle,
     TextStyle? subtitleStyle,
     TextStyle? secondaryStyle,
+    double? titleSize,
+    double? subtitleSize,
   }) {
     return WxListTileStyle(
       margin: margin ?? this.margin,
@@ -175,6 +216,8 @@ class WxListTileStyle with Diagnosticable {
       titleStyle: titleStyle ?? this.titleStyle,
       subtitleStyle: subtitleStyle ?? this.subtitleStyle,
       secondaryStyle: secondaryStyle ?? this.secondaryStyle,
+      titleSize: titleSize ?? this.titleSize,
+      subtitleSize: subtitleSize ?? this.subtitleSize,
     );
   }
 
@@ -200,6 +243,8 @@ class WxListTileStyle with Diagnosticable {
       titleStyle: other.titleStyle,
       subtitleStyle: other.subtitleStyle,
       secondaryStyle: other.secondaryStyle,
+      titleSize: other.titleSize,
+      subtitleSize: other.subtitleSize,
     );
   }
 
@@ -228,6 +273,8 @@ class WxListTileStyle with Diagnosticable {
       titleStyle: TextStyle.lerp(a?.titleStyle, b?.titleStyle, t),
       subtitleStyle: TextStyle.lerp(a?.subtitleStyle, b?.subtitleStyle, t),
       secondaryStyle: TextStyle.lerp(a?.secondaryStyle, b?.secondaryStyle, t),
+      titleSize: lerpDouble(a?.titleSize, b?.titleSize, t),
+      subtitleSize: lerpDouble(a?.subtitleSize, b?.subtitleSize, t),
     );
   }
 
@@ -247,6 +294,8 @@ class WxListTileStyle with Diagnosticable {
         'titleStyle': titleStyle,
         'subtitleStyle': subtitleStyle,
         'secondaryStyle': secondaryStyle,
+        'titleSize': titleSize,
+        'subtitleSize': subtitleSize,
       };
 
   @override

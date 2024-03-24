@@ -14,8 +14,10 @@ class WxTextTile extends StatelessWidget {
     this.style,
     required this.title,
     this.titleStyle,
+    this.titleSize,
     this.subtitle,
     this.subtitleStyle,
+    this.subtitleSize,
     this.textColor,
   }) : super(key: key);
 
@@ -37,11 +39,17 @@ class WxTextTile extends StatelessWidget {
   /// {@macro WxTextTile.titleStyle}
   final TextStyle? titleStyle;
 
+  /// {@macro WxTextTile.titleSize}
+  final double? titleSize;
+
   /// Additional content displayed below the title.
   final Widget? subtitle;
 
   /// {@macro WxTextTile.subtitleStyle}
   final TextStyle? subtitleStyle;
+
+  /// {@macro WxTextTile.subtitleSize}
+  final double? subtitleSize;
 
   /// {@macro WxTextTile.textColor}
   final Color? textColor;
@@ -52,7 +60,9 @@ class WxTextTile extends StatelessWidget {
       margin: margin,
       align: align,
       titleStyle: titleStyle,
+      titleSize: titleSize,
       subtitleStyle: subtitleStyle,
+      subtitleSize: subtitleSize,
       textColor: textColor,
     );
   }
@@ -72,7 +82,10 @@ class WxTextTile extends StatelessWidget {
       );
     }
     final titleText = DefaultTextStyle.merge(
-      style: effectiveTitleStyle?.copyWith(color: themedStyle.textColor),
+      style: effectiveTitleStyle?.copyWith(
+        color: themedStyle.textColor,
+        fontSize: themedStyle.titleSize,
+      ),
       child: title,
     );
 
@@ -86,7 +99,10 @@ class WxTextTile extends StatelessWidget {
         );
       }
       subtitleText = DefaultTextStyle.merge(
-        style: effectiveSubtitleStyle?.copyWith(color: themedStyle.textColor),
+        style: effectiveSubtitleStyle?.copyWith(
+          color: themedStyle.textColor,
+          fontSize: themedStyle.subtitleSize,
+        ),
         child: subtitle!,
       );
     }

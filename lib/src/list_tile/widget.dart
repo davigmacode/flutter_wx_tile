@@ -182,6 +182,8 @@ class WxListTile extends StatelessWidget {
             align: themedStyle.textAlign,
             spacing: themedStyle.textSpacing,
             textColor: themedStyle.textColor,
+            titleSize: themedStyle.titleSize,
+            subtitleSize: themedStyle.subtitleSize,
           ),
         ),
       ),
