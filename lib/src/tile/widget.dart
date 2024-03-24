@@ -10,7 +10,7 @@ class WxTile extends StatelessWidget {
     this.direction,
     this.crossAxisAlignment,
     this.mainAxisAlignment,
-    this.mainAxisExpanded,
+    this.inline,
     this.childExpanded,
     this.spacingEnforced,
     this.spacing,
@@ -30,8 +30,8 @@ class WxTile extends StatelessWidget {
   /// {@macro WxTile.mainAxisAlignment}
   final MainAxisAlignment? mainAxisAlignment;
 
-  /// {@macro WxTile.mainAxisExpanded}
-  final bool? mainAxisExpanded;
+  /// {@macro WxTile.inline}
+  final bool? inline;
 
   /// {@macro WxTile.childExpanded}
   final bool? childExpanded;
@@ -68,7 +68,7 @@ class WxTile extends StatelessWidget {
           spacingEnforced: spacingEnforced,
           crossAxisAlignment: crossAxisAlignment,
           mainAxisAlignment: mainAxisAlignment,
-          mainAxisExpanded: mainAxisExpanded,
+          inline: inline,
           childExpanded: childExpanded,
         );
   }
@@ -78,9 +78,9 @@ class WxTile extends StatelessWidget {
     final theme = WxTileTheme.of(context);
     final themedStyle = theme.style.merge(effectiveStyle);
 
-    final isSpacingEnforced = themedStyle.spacingEnforced;
-    final isMainAxisExpanded = themedStyle.mainAxisExpanded;
-    final isChildExpanded = isMainAxisExpanded! && themedStyle.childExpanded!;
+    final isSpacingEnforced = themedStyle.spacingEnforced == true;
+    final isInline = themedStyle.inline == true;
+    final isChildExpanded = !isInline && themedStyle.childExpanded == true;
 
     final isVertical = themedStyle.direction == Axis.vertical;
     final spacer = SizedBox(
@@ -92,12 +92,12 @@ class WxTile extends StatelessWidget {
       direction: themedStyle.direction!,
       mainAxisAlignment: themedStyle.mainAxisAlignment!,
       crossAxisAlignment: themedStyle.crossAxisAlignment!,
-      mainAxisSize: isMainAxisExpanded ? MainAxisSize.max : MainAxisSize.min,
+      mainAxisSize: isInline ? MainAxisSize.min : MainAxisSize.max,
       children: [
         leading,
-        if (hasLeading || isSpacingEnforced!) spacer,
+        if (hasLeading || isSpacingEnforced) spacer,
         isChildExpanded ? Expanded(child: child) : child,
-        if (hasTrailing || isSpacingEnforced!) spacer,
+        if (hasTrailing || isSpacingEnforced) spacer,
         trailing,
       ].whereType<Widget>().toList(growable: false),
     );

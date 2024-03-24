@@ -37,10 +37,10 @@ class WxTileStyle with Diagnosticable {
   /// {@endtemplate}
   final MainAxisAlignment? mainAxisAlignment;
 
-  /// {@template WxTile.mainAxisExpanded}
-  /// Controls whether to maximize or minimize the amount of free space.
+  /// {@template WxTile.inline}
+  /// Controls whether to minimize or maximize the amount of free space.
   /// {@endtemplate}
-  final bool? mainAxisExpanded;
+  final bool? inline;
 
   /// {@template WxTile.childExpanded}
   /// Controls how the child widget fills its available space (expand or wrap content).
@@ -55,7 +55,7 @@ class WxTileStyle with Diagnosticable {
     this.spacingEnforced,
     this.crossAxisAlignment,
     this.mainAxisAlignment,
-    this.mainAxisExpanded,
+    this.inline,
     this.childExpanded,
   });
 
@@ -67,7 +67,7 @@ class WxTileStyle with Diagnosticable {
         spacingEnforced = false,
         crossAxisAlignment = CrossAxisAlignment.center,
         mainAxisAlignment = MainAxisAlignment.start,
-        mainAxisExpanded = false,
+        inline = true,
         childExpanded = false;
 
   /// Create a [WxTileStyle] from another style
@@ -78,7 +78,7 @@ class WxTileStyle with Diagnosticable {
         spacingEnforced = other?.spacingEnforced,
         crossAxisAlignment = other?.crossAxisAlignment,
         mainAxisAlignment = other?.mainAxisAlignment,
-        mainAxisExpanded = other?.mainAxisExpanded,
+        inline = other?.inline,
         childExpanded = other?.childExpanded;
 
   /// Creates a copy of this [WxTileStyle] but with
@@ -90,7 +90,7 @@ class WxTileStyle with Diagnosticable {
     bool? spacingEnforced,
     CrossAxisAlignment? crossAxisAlignment,
     MainAxisAlignment? mainAxisAlignment,
-    bool? mainAxisExpanded,
+    bool? inline,
     bool? childExpanded,
   }) {
     return WxTileStyle(
@@ -100,7 +100,7 @@ class WxTileStyle with Diagnosticable {
       spacingEnforced: spacingEnforced ?? this.spacingEnforced,
       crossAxisAlignment: crossAxisAlignment ?? this.crossAxisAlignment,
       mainAxisAlignment: mainAxisAlignment ?? this.mainAxisAlignment,
-      mainAxisExpanded: mainAxisExpanded ?? this.mainAxisExpanded,
+      inline: inline ?? this.inline,
       childExpanded: childExpanded ?? this.childExpanded,
     );
   }
@@ -118,7 +118,7 @@ class WxTileStyle with Diagnosticable {
       spacingEnforced: other.spacingEnforced,
       crossAxisAlignment: other.crossAxisAlignment,
       mainAxisAlignment: other.mainAxisAlignment,
-      mainAxisExpanded: other.mainAxisExpanded,
+      inline: other.inline,
       childExpanded: other.childExpanded,
     );
   }
@@ -135,7 +135,7 @@ class WxTileStyle with Diagnosticable {
           lerpEnum(a?.crossAxisAlignment, b?.crossAxisAlignment, t),
       mainAxisAlignment:
           lerpEnum(a?.mainAxisAlignment, b?.mainAxisAlignment, t),
-      mainAxisExpanded: lerpBool(a?.mainAxisExpanded, b?.mainAxisExpanded, t),
+      inline: lerpBool(a?.inline, b?.inline, t),
       childExpanded: lerpBool(a?.childExpanded, b?.childExpanded, t),
     );
   }
@@ -147,7 +147,7 @@ class WxTileStyle with Diagnosticable {
         'spacingEnforced': spacingEnforced,
         'crossAxisAlignment': crossAxisAlignment,
         'mainAxisAlignment': mainAxisAlignment,
-        'mainAxisExpanded': mainAxisExpanded,
+        'inline': inline,
         'childExpanded': childExpanded,
       };
 

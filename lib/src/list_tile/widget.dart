@@ -15,11 +15,12 @@ class WxListTile extends StatelessWidget {
     this.leading,
     this.trailing,
     this.margin,
+    this.padding,
     this.spacing,
     this.spacingEnforced,
     this.crossAxisAlignment,
     this.mainAxisAlignment,
-    this.mainAxisExpanded,
+    this.inline,
     this.textExpanded,
     this.textAlign,
     this.textSpacing,
@@ -44,6 +45,9 @@ class WxListTile extends StatelessWidget {
   /// {@macro WxListTile.margin}
   final EdgeInsetsGeometry? margin;
 
+  /// {@macro WxListTile.padding}
+  final EdgeInsetsGeometry? padding;
+
   /// {@macro WxListTile.spacing}
   final double? spacing;
 
@@ -56,8 +60,8 @@ class WxListTile extends StatelessWidget {
   /// {@macro WxListTile.mainAxisAlignment}
   final MainAxisAlignment? mainAxisAlignment;
 
-  /// {@macro WxListTile.mainAxisExpanded}
-  final bool? mainAxisExpanded;
+  /// {@macro WxListTile.inline}
+  final bool? inline;
 
   /// {@macro WxListTile.textExpanded}
   final bool? textExpanded;
@@ -84,11 +88,12 @@ class WxListTile extends StatelessWidget {
   WxListTileStyle get effectiveStyle {
     return WxListTileStyle.from(style).copyWith(
       margin: margin,
+      padding: padding,
       spacing: spacing,
       spacingEnforced: spacingEnforced,
       crossAxisAlignment: crossAxisAlignment,
       mainAxisAlignment: mainAxisAlignment,
-      mainAxisExpanded: mainAxisExpanded,
+      inline: inline,
       textExpanded: textExpanded,
       textAlign: textAlign,
       textSpacing: textSpacing,
@@ -108,7 +113,7 @@ class WxListTile extends StatelessWidget {
       spacingEnforced: themedStyle.spacingEnforced,
       crossAxisAlignment: themedStyle.crossAxisAlignment,
       mainAxisAlignment: themedStyle.mainAxisAlignment,
-      mainAxisExpanded: themedStyle.mainAxisExpanded,
+      inline: themedStyle.inline,
       childExpanded: themedStyle.textExpanded,
       leading: leading,
       trailing: trailing,
@@ -122,7 +127,18 @@ class WxListTile extends StatelessWidget {
       ),
     );
 
-    return theme.effectiveBuilder(context, content, onTap);
+    // build gesture wrapper
+    content = theme.effectiveBuilder(context, content, onTap);
+
+    // added margin if needed
+    if (themedStyle.margin != null) {
+      content = Padding(
+        padding: themedStyle.margin!,
+        child: content,
+      );
+    }
+
+    return content;
   }
 
   @override
