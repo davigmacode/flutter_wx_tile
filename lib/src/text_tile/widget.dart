@@ -47,23 +47,45 @@ class WxTextTile extends StatelessWidget {
       spacing: spacing,
       margin: margin,
       align: align,
+      titleStyle: titleStyle,
+      subtitleStyle: subtitleStyle,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
-    final defaultTitleStyle = textTheme.bodyLarge?.copyWith(
-      color: colorScheme.onSurface,
-    );
-    final defaultSubtitleStyle = textTheme.bodyMedium?.copyWith(
-      color: colorScheme.onSurfaceVariant,
-    );
-
     final tileTheme = WxTextTileTheme.of(context);
     final themedStyle = tileTheme.style.merge(effectiveStyle);
+
+    ThemeData? theme;
+
+    TextStyle? effectiveTitleStyle = themedStyle.titleStyle;
+    if (effectiveTitleStyle == null) {
+      theme = Theme.of(context);
+      effectiveTitleStyle = theme.textTheme.bodyLarge?.copyWith(
+        color: theme.colorScheme.onSurface,
+      );
+    }
+    final titleText = DefaultTextStyle.merge(
+      style: effectiveTitleStyle,
+      child: title,
+    );
+
+    Widget? subtitleText;
+    if (subtitle != null) {
+      TextStyle? effectiveSubtitleStyle = themedStyle.subtitleStyle;
+      if (effectiveSubtitleStyle == null) {
+        theme ??= Theme.of(context);
+        effectiveSubtitleStyle = theme.textTheme.bodyMedium?.copyWith(
+          color: theme.colorScheme.onSurfaceVariant,
+        );
+      }
+      subtitleText = DefaultTextStyle.merge(
+        style: effectiveSubtitleStyle,
+        child: subtitle!,
+      );
+    }
+
     return WxTile(
       direction: Axis.vertical,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -72,16 +94,8 @@ class WxTextTile extends StatelessWidget {
       spacing: themedStyle.spacing,
       margin: themedStyle.margin,
       crossAxisAlignment: themedStyle.crossAxisAlignment,
-      trailing: subtitle != null
-          ? DefaultTextStyle.merge(
-              style: subtitleStyle ?? defaultSubtitleStyle,
-              child: subtitle!,
-            )
-          : null,
-      child: DefaultTextStyle.merge(
-        style: titleStyle ?? defaultTitleStyle,
-        child: title,
-      ),
+      trailing: subtitleText,
+      child: titleText,
     );
   }
 
