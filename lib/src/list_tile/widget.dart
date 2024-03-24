@@ -26,6 +26,7 @@ class WxListTile extends StatelessWidget {
     this.textAlign,
     this.textSpacing,
     this.textColor,
+    this.iconColor,
     this.titleStyle,
     this.subtitleStyle,
     this.secondaryStyle,
@@ -78,6 +79,9 @@ class WxListTile extends StatelessWidget {
   /// {@macro WxListTile.textColor}
   final Color? textColor;
 
+  /// {@macro WxListTile.iconColor}
+  final Color? iconColor;
+
   /// {@macro WxListTile.titleStyle}
   final TextStyle? titleStyle;
 
@@ -107,6 +111,7 @@ class WxListTile extends StatelessWidget {
       textAlign: textAlign,
       textSpacing: textSpacing,
       textColor: textColor,
+      iconColor: iconColor,
       titleStyle: titleStyle,
       subtitleStyle: subtitleStyle,
       secondaryStyle: secondaryStyle,
@@ -148,25 +153,37 @@ class WxListTile extends StatelessWidget {
       );
     }
 
-    Widget content = WxTile(
-      direction: Axis.horizontal,
-      margin: themedStyle.padding,
-      spacing: themedStyle.spacing,
-      spacingEnforced: themedStyle.spacingEnforced,
-      crossAxisAlignment: themedStyle.crossAxisAlignment,
-      mainAxisAlignment: themedStyle.mainAxisAlignment,
-      inline: themedStyle.inline,
-      childExpanded: themedStyle.textExpanded,
-      leading: leadingWidget,
-      trailing: trailingWidget,
-      child: WxTextTile(
-        title: title,
-        subtitle: subtitle,
-        titleStyle: themedStyle.titleStyle,
-        subtitleStyle: themedStyle.subtitleStyle,
-        align: themedStyle.textAlign,
-        spacing: themedStyle.textSpacing,
-        textColor: themedStyle.textColor,
+    final effectiveIconColor = themedStyle.iconColor;
+    final iconThemeData = IconThemeData(color: effectiveIconColor);
+    final iconButtonThemeData = IconButtonThemeData(
+      style: IconButton.styleFrom(foregroundColor: effectiveIconColor),
+    );
+
+    Widget content = IconTheme.merge(
+      data: iconThemeData,
+      child: IconButtonTheme(
+        data: iconButtonThemeData,
+        child: WxTile(
+          direction: Axis.horizontal,
+          margin: themedStyle.padding,
+          spacing: themedStyle.spacing,
+          spacingEnforced: themedStyle.spacingEnforced,
+          crossAxisAlignment: themedStyle.crossAxisAlignment,
+          mainAxisAlignment: themedStyle.mainAxisAlignment,
+          inline: themedStyle.inline,
+          childExpanded: themedStyle.textExpanded,
+          leading: leadingWidget,
+          trailing: trailingWidget,
+          child: WxTextTile(
+            title: title,
+            subtitle: subtitle,
+            titleStyle: themedStyle.titleStyle,
+            subtitleStyle: themedStyle.subtitleStyle,
+            align: themedStyle.textAlign,
+            spacing: themedStyle.textSpacing,
+            textColor: themedStyle.textColor,
+          ),
+        ),
       ),
     );
 

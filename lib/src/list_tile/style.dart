@@ -65,6 +65,11 @@ class WxListTileStyle with Diagnosticable {
   /// {@endtemplate}
   final Color? textColor;
 
+  /// {@template WxListTile.iconColor}
+  /// Defines the default color for [leading] and [trailing] icons.
+  /// {@endtemplate}
+  final Color? iconColor;
+
   /// {@template WxListTile.titleStyle}
   /// The text style to be applied to title.
   /// {@endtemplate}
@@ -93,6 +98,7 @@ class WxListTileStyle with Diagnosticable {
     this.textAlign,
     this.textSpacing,
     this.textColor,
+    this.iconColor,
     this.titleStyle,
     this.subtitleStyle,
     this.secondaryStyle,
@@ -111,6 +117,7 @@ class WxListTileStyle with Diagnosticable {
         textAlign = WxTextTileAlign.left,
         textSpacing = 0.0,
         textColor = null,
+        iconColor = null,
         titleStyle = null,
         subtitleStyle = null,
         secondaryStyle = null;
@@ -128,6 +135,7 @@ class WxListTileStyle with Diagnosticable {
         textAlign = other?.textAlign,
         textSpacing = other?.textSpacing,
         textColor = other?.textColor,
+        iconColor = other?.iconColor,
         titleStyle = other?.titleStyle,
         subtitleStyle = other?.subtitleStyle,
         secondaryStyle = other?.secondaryStyle;
@@ -146,6 +154,7 @@ class WxListTileStyle with Diagnosticable {
     WxTextTileAlign? textAlign,
     double? textSpacing,
     Color? textColor,
+    Color? iconColor,
     TextStyle? titleStyle,
     TextStyle? subtitleStyle,
     TextStyle? secondaryStyle,
@@ -162,6 +171,7 @@ class WxListTileStyle with Diagnosticable {
       textAlign: textAlign ?? this.textAlign,
       textSpacing: textSpacing ?? this.textSpacing,
       textColor: textColor ?? this.textColor,
+      iconColor: iconColor ?? this.iconColor,
       titleStyle: titleStyle ?? this.titleStyle,
       subtitleStyle: subtitleStyle ?? this.subtitleStyle,
       secondaryStyle: secondaryStyle ?? this.secondaryStyle,
@@ -186,6 +196,7 @@ class WxListTileStyle with Diagnosticable {
       textAlign: other.textAlign,
       textSpacing: other.textSpacing,
       textColor: other.textColor,
+      iconColor: other.iconColor,
       titleStyle: other.titleStyle,
       subtitleStyle: other.subtitleStyle,
       secondaryStyle: other.secondaryStyle,
@@ -213,6 +224,7 @@ class WxListTileStyle with Diagnosticable {
       textAlign: lerpEnum(a?.textAlign, b?.textAlign, t),
       textSpacing: lerpDouble(a?.textSpacing, b?.textSpacing, t),
       textColor: Color.lerp(a?.textColor, b?.textColor, t),
+      iconColor: Color.lerp(a?.iconColor, b?.iconColor, t),
       titleStyle: TextStyle.lerp(a?.titleStyle, b?.titleStyle, t),
       subtitleStyle: TextStyle.lerp(a?.subtitleStyle, b?.subtitleStyle, t),
       secondaryStyle: TextStyle.lerp(a?.secondaryStyle, b?.secondaryStyle, t),
@@ -231,6 +243,7 @@ class WxListTileStyle with Diagnosticable {
         'textAlign': textAlign,
         'textSpacing': textSpacing,
         'textColor': textColor,
+        'iconColor': iconColor,
         'titleStyle': titleStyle,
         'subtitleStyle': subtitleStyle,
         'secondaryStyle': secondaryStyle,
