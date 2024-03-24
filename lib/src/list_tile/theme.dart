@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'style.dart';
+import 'wrapper.dart';
 import 'theme_data.dart';
 
 /// A Widget that controls how descendant tile should look like.
@@ -26,6 +27,7 @@ class WxListTileTheme extends InheritedTheme {
   static Widget merge({
     Key? key,
     WxListTileStyle? style,
+    WxListTileBuilder? wrapper,
     WxListTileThemeData? data,
     required Widget child,
   }) {
@@ -34,7 +36,10 @@ class WxListTileTheme extends InheritedTheme {
         final parent = WxListTileTheme.of(context);
         return WxListTileTheme(
           key: key,
-          data: parent.merge(data),
+          data: parent.merge(data).copyWith(
+                style: style,
+                wrapper: wrapper,
+              ),
           child: child,
         );
       },

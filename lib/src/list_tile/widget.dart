@@ -4,6 +4,7 @@ import '../tile/widget.dart';
 import '../text_tile/types.dart';
 import '../text_tile/widget.dart';
 import 'style.dart';
+import 'wrapper.dart';
 import 'theme.dart';
 
 class WxListTile extends StatelessWidget {
@@ -128,7 +129,14 @@ class WxListTile extends StatelessWidget {
     );
 
     // build gesture wrapper
-    content = theme.effectiveBuilder(context, content, onTap);
+    content = theme.effectiveWrapper(
+      context,
+      WxListTileContext(
+        onTap: onTap,
+        style: themedStyle,
+        child: content,
+      ),
+    );
 
     // added margin if needed
     if (themedStyle.margin != null) {
