@@ -25,6 +25,7 @@ class WxListTile extends StatelessWidget {
     this.textExpanded,
     this.textAlign,
     this.textSpacing,
+    this.textColor,
     this.titleStyle,
     this.subtitleStyle,
     this.secondaryStyle,
@@ -74,6 +75,9 @@ class WxListTile extends StatelessWidget {
   /// {@macro WxListTile.textSpacing}
   final double? textSpacing;
 
+  /// {@macro WxListTile.textColor}
+  final Color? textColor;
+
   /// {@macro WxListTile.titleStyle}
   final TextStyle? titleStyle;
 
@@ -102,6 +106,7 @@ class WxListTile extends StatelessWidget {
       textExpanded: textExpanded,
       textAlign: textAlign,
       textSpacing: textSpacing,
+      textColor: textColor,
       titleStyle: titleStyle,
       subtitleStyle: subtitleStyle,
       secondaryStyle: secondaryStyle,
@@ -126,7 +131,9 @@ class WxListTile extends StatelessWidget {
     Widget? leadingWidget;
     if (leading != null) {
       leadingWidget = DefaultTextStyle.merge(
-        style: effectiveSecondaryStyle,
+        style: effectiveSecondaryStyle?.copyWith(
+          color: themedStyle.textColor,
+        ),
         child: leading!,
       );
     }
@@ -134,7 +141,9 @@ class WxListTile extends StatelessWidget {
     Widget? trailingWidget;
     if (trailing != null) {
       trailingWidget = DefaultTextStyle.merge(
-        style: effectiveSecondaryStyle,
+        style: effectiveSecondaryStyle?.copyWith(
+          color: themedStyle.textColor,
+        ),
         child: trailing!,
       );
     }
@@ -157,6 +166,7 @@ class WxListTile extends StatelessWidget {
         subtitleStyle: themedStyle.subtitleStyle,
         align: themedStyle.textAlign,
         spacing: themedStyle.textSpacing,
+        textColor: themedStyle.textColor,
       ),
     );
 

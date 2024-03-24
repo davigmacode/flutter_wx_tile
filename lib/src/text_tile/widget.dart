@@ -16,6 +16,7 @@ class WxTextTile extends StatelessWidget {
     this.titleStyle,
     this.subtitle,
     this.subtitleStyle,
+    this.textColor,
   }) : super(key: key);
 
   /// {@macro WxTextTile.spacing}
@@ -42,6 +43,9 @@ class WxTextTile extends StatelessWidget {
   /// {@macro WxTextTile.subtitleStyle}
   final TextStyle? subtitleStyle;
 
+  /// {@macro WxTextTile.textColor}
+  final Color? textColor;
+
   WxTextTileStyle get effectiveStyle {
     return WxTextTileStyle.from(style).copyWith(
       spacing: spacing,
@@ -49,6 +53,7 @@ class WxTextTile extends StatelessWidget {
       align: align,
       titleStyle: titleStyle,
       subtitleStyle: subtitleStyle,
+      textColor: textColor,
     );
   }
 
@@ -67,7 +72,7 @@ class WxTextTile extends StatelessWidget {
       );
     }
     final titleText = DefaultTextStyle.merge(
-      style: effectiveTitleStyle,
+      style: effectiveTitleStyle?.copyWith(color: themedStyle.textColor),
       child: title,
     );
 
@@ -81,7 +86,7 @@ class WxTextTile extends StatelessWidget {
         );
       }
       subtitleText = DefaultTextStyle.merge(
-        style: effectiveSubtitleStyle,
+        style: effectiveSubtitleStyle?.copyWith(color: themedStyle.textColor),
         child: subtitle!,
       );
     }

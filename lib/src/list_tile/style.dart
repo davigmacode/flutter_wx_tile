@@ -60,6 +60,11 @@ class WxListTileStyle with Diagnosticable {
   /// {@endtemplate}
   final double? textSpacing;
 
+  /// {@template WxListTile.textColor}
+  /// The text color to be applied to title and subtitle.
+  /// {@endtemplate}
+  final Color? textColor;
+
   /// {@template WxListTile.titleStyle}
   /// The text style to be applied to title.
   /// {@endtemplate}
@@ -87,6 +92,7 @@ class WxListTileStyle with Diagnosticable {
     this.textExpanded,
     this.textAlign,
     this.textSpacing,
+    this.textColor,
     this.titleStyle,
     this.subtitleStyle,
     this.secondaryStyle,
@@ -104,6 +110,7 @@ class WxListTileStyle with Diagnosticable {
         textExpanded = true,
         textAlign = WxTextTileAlign.left,
         textSpacing = 0.0,
+        textColor = null,
         titleStyle = null,
         subtitleStyle = null,
         secondaryStyle = null;
@@ -120,6 +127,7 @@ class WxListTileStyle with Diagnosticable {
         textExpanded = other?.textExpanded,
         textAlign = other?.textAlign,
         textSpacing = other?.textSpacing,
+        textColor = other?.textColor,
         titleStyle = other?.titleStyle,
         subtitleStyle = other?.subtitleStyle,
         secondaryStyle = other?.secondaryStyle;
@@ -137,6 +145,7 @@ class WxListTileStyle with Diagnosticable {
     bool? textExpanded,
     WxTextTileAlign? textAlign,
     double? textSpacing,
+    Color? textColor,
     TextStyle? titleStyle,
     TextStyle? subtitleStyle,
     TextStyle? secondaryStyle,
@@ -152,6 +161,7 @@ class WxListTileStyle with Diagnosticable {
       textExpanded: textExpanded ?? this.textExpanded,
       textAlign: textAlign ?? this.textAlign,
       textSpacing: textSpacing ?? this.textSpacing,
+      textColor: textColor ?? this.textColor,
       titleStyle: titleStyle ?? this.titleStyle,
       subtitleStyle: subtitleStyle ?? this.subtitleStyle,
       secondaryStyle: secondaryStyle ?? this.secondaryStyle,
@@ -175,6 +185,7 @@ class WxListTileStyle with Diagnosticable {
       textExpanded: other.textExpanded,
       textAlign: other.textAlign,
       textSpacing: other.textSpacing,
+      textColor: other.textColor,
       titleStyle: other.titleStyle,
       subtitleStyle: other.subtitleStyle,
       secondaryStyle: other.secondaryStyle,
@@ -201,6 +212,7 @@ class WxListTileStyle with Diagnosticable {
       textExpanded: lerpBool(a?.textExpanded, b?.textExpanded, t),
       textAlign: lerpEnum(a?.textAlign, b?.textAlign, t),
       textSpacing: lerpDouble(a?.textSpacing, b?.textSpacing, t),
+      textColor: Color.lerp(a?.textColor, b?.textColor, t),
       titleStyle: TextStyle.lerp(a?.titleStyle, b?.titleStyle, t),
       subtitleStyle: TextStyle.lerp(a?.subtitleStyle, b?.subtitleStyle, t),
       secondaryStyle: TextStyle.lerp(a?.secondaryStyle, b?.secondaryStyle, t),
@@ -218,6 +230,7 @@ class WxListTileStyle with Diagnosticable {
         'childExpanded': textExpanded,
         'textAlign': textAlign,
         'textSpacing': textSpacing,
+        'textColor': textColor,
         'titleStyle': titleStyle,
         'subtitleStyle': subtitleStyle,
         'secondaryStyle': secondaryStyle,

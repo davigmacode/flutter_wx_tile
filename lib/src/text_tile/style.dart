@@ -31,6 +31,11 @@ class WxTextTileStyle with Diagnosticable {
   /// {@endtemplate}
   final TextStyle? subtitleStyle;
 
+  /// {@template WxTextTile.textColor}
+  /// The text color to be applied to title and subtitle.
+  /// {@endtemplate}
+  final Color? textColor;
+
   /// [CrossAxisAlignment] from [align]
   CrossAxisAlignment get crossAxisAlignment {
     switch (align) {
@@ -51,6 +56,7 @@ class WxTextTileStyle with Diagnosticable {
     this.align,
     this.titleStyle,
     this.subtitleStyle,
+    this.textColor,
   });
 
   /// Create a [WxTextTileStyle] with default value
@@ -59,7 +65,8 @@ class WxTextTileStyle with Diagnosticable {
         margin = EdgeInsets.zero,
         align = WxTextTileAlign.left,
         titleStyle = null,
-        subtitleStyle = null;
+        subtitleStyle = null,
+        textColor = null;
 
   /// Create a [WxTextTileStyle] from another style
   WxTextTileStyle.from(WxTextTileStyle? other)
@@ -67,7 +74,8 @@ class WxTextTileStyle with Diagnosticable {
         margin = other?.margin,
         align = other?.align,
         titleStyle = other?.titleStyle,
-        subtitleStyle = other?.subtitleStyle;
+        subtitleStyle = other?.subtitleStyle,
+        textColor = other?.textColor;
 
   /// Creates a copy of this [WxTextTileStyle] but with
   /// the given fields replaced with the new values.
@@ -77,13 +85,15 @@ class WxTextTileStyle with Diagnosticable {
     WxTextTileAlign? align,
     TextStyle? titleStyle,
     TextStyle? subtitleStyle,
+    Color? textColor,
   }) {
     return WxTextTileStyle(
       spacing: spacing ?? this.spacing,
       margin: margin ?? this.margin,
       align: align ?? this.align,
       titleStyle: titleStyle ?? this.titleStyle,
-      subtitleStyle: titleStyle ?? this.subtitleStyle,
+      subtitleStyle: subtitleStyle ?? this.subtitleStyle,
+      textColor: textColor ?? this.textColor,
     );
   }
 
@@ -98,7 +108,8 @@ class WxTextTileStyle with Diagnosticable {
       margin: other.margin,
       align: other.align,
       titleStyle: other.titleStyle,
-      subtitleStyle: other.titleStyle,
+      subtitleStyle: other.subtitleStyle,
+      textColor: other.textColor,
     );
   }
 
@@ -115,6 +126,7 @@ class WxTextTileStyle with Diagnosticable {
       align: lerpEnum(a?.align, b?.align, t),
       titleStyle: TextStyle.lerp(a?.titleStyle, b?.titleStyle, t),
       subtitleStyle: TextStyle.lerp(a?.subtitleStyle, b?.subtitleStyle, t),
+      textColor: Color.lerp(a?.textColor, b?.textColor, t),
     );
   }
 
@@ -124,6 +136,7 @@ class WxTextTileStyle with Diagnosticable {
         'align': align,
         'titleStyle': titleStyle,
         'subtitleStyle': subtitleStyle,
+        'textColor': textColor,
       };
 
   @override
