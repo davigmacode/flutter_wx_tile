@@ -1,1 +1,1 @@
-enum WxTextTileAlign { left, center, right }
+enum WxTextAlign { left, center, right }

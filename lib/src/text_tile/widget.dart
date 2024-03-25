@@ -28,7 +28,7 @@ class WxTextTile extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
 
   /// {@macro WxTextTile.align}
-  final WxTextTileAlign? align;
+  final WxTextAlign? align;
 
   /// The style to be applied
   final WxTextTileStyle? style;

@@ -19,7 +19,7 @@ class WxTextTileStyle with Diagnosticable {
   /// {@template WxTextTile.align}
   /// How the title and subtitle should be placed along the cross axis.
   /// {@endtemplate}
-  final WxTextTileAlign? align;
+  final WxTextAlign? align;
 
   /// {@template WxTextTile.titleStyle}
   /// The text style to be applied to title.
@@ -49,11 +49,11 @@ class WxTextTileStyle with Diagnosticable {
   /// [CrossAxisAlignment] from [align]
   CrossAxisAlignment get crossAxisAlignment {
     switch (align) {
-      case WxTextTileAlign.center:
+      case WxTextAlign.center:
         return CrossAxisAlignment.center;
-      case WxTextTileAlign.right:
+      case WxTextAlign.right:
         return CrossAxisAlignment.end;
-      case WxTextTileAlign.left:
+      case WxTextAlign.left:
       default:
         return CrossAxisAlignment.start;
     }
@@ -75,7 +75,7 @@ class WxTextTileStyle with Diagnosticable {
   const WxTextTileStyle.defaults()
       : spacing = 0.0,
         margin = EdgeInsets.zero,
-        align = WxTextTileAlign.left,
+        align = WxTextAlign.left,
         titleStyle = null,
         titleSize = null,
         subtitleStyle = null,
@@ -98,7 +98,7 @@ class WxTextTileStyle with Diagnosticable {
   WxTextTileStyle copyWith({
     double? spacing,
     EdgeInsetsGeometry? margin,
-    WxTextTileAlign? align,
+    WxTextAlign? align,
     TextStyle? titleStyle,
     double? titleSize,
     TextStyle? subtitleStyle,

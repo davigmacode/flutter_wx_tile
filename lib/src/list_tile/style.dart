@@ -53,7 +53,7 @@ class WxListTileStyle with Diagnosticable {
   /// {@template WxListTile.textAlign}
   /// How the title and subtitle should be placed along the cross axis.
   /// {@endtemplate}
-  final WxTextTileAlign? textAlign;
+  final WxTextAlign? textAlign;
 
   /// {@template WxListTile.textSpacing}
   /// The gap between the [title] and the [subtitle] widgets.
@@ -129,7 +129,7 @@ class WxListTileStyle with Diagnosticable {
         mainAxisAlignment = MainAxisAlignment.spaceBetween,
         inline = false,
         textExpanded = true,
-        textAlign = WxTextTileAlign.left,
+        textAlign = WxTextAlign.left,
         textSpacing = 0.0,
         textColor = null,
         iconColor = null,
@@ -190,7 +190,7 @@ class WxListTileStyle with Diagnosticable {
     MainAxisAlignment? mainAxisAlignment,
     bool? inline,
     bool? textExpanded,
-    WxTextTileAlign? textAlign,
+    WxTextAlign? textAlign,
     double? textSpacing,
     Color? textColor,
     Color? iconColor,

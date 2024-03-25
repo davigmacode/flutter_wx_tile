@@ -71,7 +71,7 @@ class WxListTile extends StatelessWidget {
   final bool? textExpanded;
 
   /// {@macro WxListTile.textAlign}
-  final WxTextTileAlign? textAlign;
+  final WxTextAlign? textAlign;
 
   /// {@macro WxListTile.textSpacing}
   final double? textSpacing;
