@@ -1,3 +1,5 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+* Added basic tile.
+* Added text tile.
+* Added list tile.

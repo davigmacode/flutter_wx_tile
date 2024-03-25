@@ -1,7 +1,18 @@
 name: wx_tile
 description: A highly customizable widget that extends the capabilities of Flutter's ListTile.
 version: 1.0.0
-homepage:
+homepage: https://github.com/davigmacode/flutter_wx_tile
+
+topics:
+  - ui
+  - tile
+  - text-tile
+  - list-tile
+  - widget
+
+funding:
+ - https://buymeacoffee.com/davigmacode
+ - https://ko-fi.com/davigmacode
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
