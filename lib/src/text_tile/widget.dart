@@ -110,7 +110,7 @@ class WxTextTile extends StatelessWidget {
     return WxTile(
       direction: Axis.vertical,
       mainAxisAlignment: MainAxisAlignment.start,
-      inline: false,
+      inline: true,
       spacingEnforced: false,
       spacing: themedStyle.spacing,
       margin: themedStyle.margin,
