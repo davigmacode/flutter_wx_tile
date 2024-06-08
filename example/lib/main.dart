@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wx_tile/wx_tile.dart';
+import 'package:wx_text/wx_text.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,111 +32,145 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    return WxListTileTheme.merge(
+      wrapper: WxListTileWrapper.inkWell(
+        // splashFactory: NoSplash.splashFactory,
+        borderRadius: BorderRadius.circular(5),
+      ),
+      // wrapper: (context, widget) {
+      //   return OutlinedButton(
+      //     onPressed: widget.onTap,
+      //     child: widget.child,
+      //   );
+      // },
+      // style: WxListTileStyle(
+      //   inline: true,
+      //   textAlign: WxTextAlign.center,
+      // ),
+      child: Wrapper(
+        children: <Widget>[
+          const SizedBox(height: 40),
+          const WxText.displayMedium(
+            'WxTile',
+            gradient: LinearGradient(
+              colors: [
+                Colors.green,
+                Colors.blue,
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            fontWeight: FontWeight.bold,
+            letterSpacing: -2,
+          ),
+          const SizedBox(height: 10),
+          const Example(
+            title: 'Basic Tile',
+            child: DefaultTextStyle(
+              style: TextStyle(
+                backgroundColor: Colors.amber,
+                color: Colors.black87,
+              ),
+              child: Wrap(
+                spacing: 20,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  DefaultTextStyle(
+                    style: TextStyle(
+                      backgroundColor: Colors.blue,
+                      color: Colors.white,
+                    ),
+                    child: WxTile(
+                      spacing: 10,
+                      leading: Text('Leading'),
+                      trailing: Text('Trailing'),
+                      child: Text('Horizontal Tile'),
+                    ),
+                  ),
+                  WxTile(
+                    spacing: 3,
+                    direction: Axis.vertical,
+                    leading: Text('Leading'),
+                    trailing: Text('Trailing'),
+                    child: Text('Vertical Tile'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const Example(
+            title: 'Text Tile',
+            child: DefaultTextStyle(
+              style: TextStyle(
+                backgroundColor: Colors.amber,
+                color: Colors.black87,
+              ),
+              child: WxTextTile(
+                title: Text('Title'),
+                subtitle: Text('Subtitle'),
+                spacing: 5,
+                align: WxTextAlign.right,
+              ),
+            ),
+          ),
+          Example(
+            title: 'List Tile',
+            child: WxListTile(
+              title: const Text('title'),
+              subtitle: const Text('subtitle'),
+              leading: const Icon(Icons.access_time),
+              trailing: IconButton(
+                icon: const Icon(Icons.close),
+                onPressed: () {},
+              ),
+              textColor: Colors.blue,
+              iconColor: Colors.amber,
+              onTap: () {},
+            ),
+          ),
+          Example(
+            title: 'Inline List Tile',
+            child: WxListTile(
+              title: const Text('title'),
+              subtitle: const Text('subtitle'),
+              leading: const Icon(Icons.access_time),
+              trailing: IconButton(
+                icon: const Icon(Icons.close),
+                onPressed: () {},
+              ),
+              inline: true,
+              textAlign: WxTextAlign.center,
+              textColor: Colors.blue,
+              iconColor: Colors.amber,
+              style: const WxListTileStyle.dense(),
+              onTap: () {},
+            ),
+          ),
+          const SizedBox(height: 40),
+        ],
+      ),
+    );
+  }
+}
+
+class Wrapper extends StatelessWidget {
+  const Wrapper({
+    super.key,
+    required this.children,
+  });
+
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: WxListTileTheme.merge(
-        wrapper: WxListTileWrapper.inkWell(
-          // splashFactory: NoSplash.splashFactory,
-          borderRadius: BorderRadius.circular(5),
-        ),
-        // wrapper: (context, widget) {
-        //   return OutlinedButton(
-        //     onPressed: widget.onTap,
-        //     child: widget.child,
-        //   );
-        // },
-        // style: WxListTileStyle(
-        //   inline: true,
-        //   textAlign: WxTextAlign.center,
-        // ),
-        child: SingleChildScrollView(
-          child: Center(
+      body: SingleChildScrollView(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 400),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const SampleCard(
-                  title: 'Basic Tile',
-                  child: DefaultTextStyle(
-                    style: TextStyle(
-                      backgroundColor: Colors.amber,
-                      color: Colors.black87,
-                    ),
-                    child: Wrap(
-                      spacing: 20,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        DefaultTextStyle(
-                          style: TextStyle(
-                            backgroundColor: Colors.blue,
-                            color: Colors.white,
-                          ),
-                          child: WxTile(
-                            spacing: 10,
-                            leading: Text('Leading'),
-                            trailing: Text('Trailing'),
-                            child: Text('Horizontal Tile'),
-                          ),
-                        ),
-                        WxTile(
-                          spacing: 3,
-                          direction: Axis.vertical,
-                          leading: Text('Leading'),
-                          trailing: Text('Trailing'),
-                          child: Text('Vertical Tile'),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SampleCard(
-                  title: 'Text Tile',
-                  child: DefaultTextStyle(
-                    style: TextStyle(
-                      backgroundColor: Colors.amber,
-                      color: Colors.black87,
-                    ),
-                    child: WxTextTile(
-                      title: Text('Title'),
-                      subtitle: Text('Subtitle'),
-                      spacing: 5,
-                      align: WxTextAlign.right,
-                    ),
-                  ),
-                ),
-                SampleCard(
-                  title: 'Basic List Tile',
-                  child: WxListTile(
-                    title: const Text('title'),
-                    subtitle: const Text('subtitle'),
-                    leading: const Icon(Icons.access_time),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.close),
-                      onPressed: () {},
-                    ),
-                    textColor: Colors.blue,
-                    iconColor: Colors.amber,
-                    margin: const EdgeInsets.all(15),
-                    onTap: () {},
-                  ),
-                ),
-                SampleCard(
-                  title: 'Inline List Tile',
-                  child: WxListTile(
-                    title: const Text('title'),
-                    subtitle: const Text('subtitle'),
-                    leading: const Icon(Icons.access_time),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.close),
-                      onPressed: () {},
-                    ),
-                    inline: true,
-                    textAlign: WxTextAlign.center,
-                    textColor: Colors.blue,
-                    iconColor: Colors.amber,
-                    style: const WxListTileStyle.dense(),
-                    onTap: () {},
-                  ),
-                ),
-              ],
+              children: children,
             ),
           ),
         ),
@@ -144,8 +179,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class SampleCard extends StatelessWidget {
-  const SampleCard({
+class Example extends StatelessWidget {
+  const Example({
     super.key,
     required this.title,
     required this.child,
@@ -156,39 +191,25 @@ class SampleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 15),
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Card(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 400,
-                minHeight: 150,
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+          child: WxText.labelLarge(title),
+        ),
+        Card.outlined(
+          child: SizedBox(
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
               child: Center(child: child),
             ),
           ),
-          Positioned(
-            top: -8,
-            left: 25,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surface,
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(3.0),
-                child: Text(
-                  ' $title ',
-                  style: Theme.of(context).textTheme.labelLarge,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+        const SizedBox(height: 10),
+      ],
     );
   }
 }
