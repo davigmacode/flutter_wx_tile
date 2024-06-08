@@ -38,6 +38,20 @@ WxListTile(
   margin: const EdgeInsets.all(15),
   onTap: () {},
 )
+
+WxInlineTile(
+  title: const Text('title'),
+  subtitle: const Text('subtitle'),
+  leading: const Icon(Icons.access_time),
+  trailing: IconButton(
+    icon: const Icon(Icons.close),
+    onPressed: () {},
+  ),
+  textColor: Colors.blue,
+  iconColor: Colors.amber,
+  margin: const EdgeInsets.all(15),
+  onTap: () {},
+)
 ```
 
 ## Sponsoring

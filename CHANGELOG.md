@@ -1,3 +1,7 @@
+## 1.1.1
+
+* Update preview
+
 ## 1.1.0
 
 * Added dedicated class for inline tile
