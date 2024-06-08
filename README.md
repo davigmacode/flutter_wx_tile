@@ -2,7 +2,7 @@
 
 A highly customizable widget that extends the capabilities of Flutter's ListTile.
 
-[![Preview](https://github.com/davigmacode/flutter_wx_tile/raw/main/media/preview.jpg)](https://davigmacode.github.io/flutter_wx_tile)
+[![Preview](https://github.com/davigmacode/flutter_wx_tile/raw/main/media/preview.gif)](https://davigmacode.github.io/flutter_wx_tile)
 
 [Demo](https://davigmacode.github.io/flutter_wx_tile)
 
