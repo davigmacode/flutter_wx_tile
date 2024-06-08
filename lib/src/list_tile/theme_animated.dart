@@ -13,18 +13,13 @@ class WxAnimatedListTileTheme extends ImplicitlyAnimatedWidget {
 
   /// Creates a widget that animates the [data] implicitly.
   const WxAnimatedListTileTheme({
-    Key? key,
-    Curve curve = Curves.linear,
-    Duration duration = const Duration(milliseconds: 200),
-    VoidCallback? onEnd,
+    super.key,
+    super.curve = Curves.linear,
+    super.duration = const Duration(milliseconds: 200),
+    super.onEnd,
     required this.data,
     required this.child,
-  }) : super(
-          key: key,
-          curve: curve,
-          duration: duration,
-          onEnd: onEnd,
-        );
+  });
 
   @override
   AnimatedWidgetBaseState<WxAnimatedListTileTheme> createState() =>

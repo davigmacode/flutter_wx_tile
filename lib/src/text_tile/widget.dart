@@ -7,7 +7,7 @@ import 'theme.dart';
 
 class WxTextTile extends StatelessWidget {
   const WxTextTile({
-    Key? key,
+    super.key,
     this.spacing,
     this.margin,
     this.align,
@@ -19,7 +19,7 @@ class WxTextTile extends StatelessWidget {
     this.subtitleStyle,
     this.subtitleSize,
     this.textColor,
-  }) : super(key: key);
+  });
 
   /// {@macro WxTextTile.spacing}
   final double? spacing;

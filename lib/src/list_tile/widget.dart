@@ -10,7 +10,7 @@ import 'theme.dart';
 class WxListTile extends StatelessWidget {
   /// Create a list item tile
   const WxListTile({
-    Key? key,
+    super.key,
     required this.title,
     this.subtitle,
     this.leading,
@@ -32,7 +32,7 @@ class WxListTile extends StatelessWidget {
     this.secondaryStyle,
     this.style,
     this.onTap,
-  }) : super(key: key);
+  });
 
   /// The primary content
   final Widget title;

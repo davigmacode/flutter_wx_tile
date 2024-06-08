@@ -15,10 +15,10 @@ class WxListTileTheme extends InheritedTheme {
   /// Creates a theme that controls
   /// how descendant [WxListTileTheme]s should look like.
   const WxListTileTheme({
-    Key? key,
+    super.key,
     required this.data,
-    required Widget child,
-  }) : super(key: key, child: child);
+    required super.child,
+  });
 
   /// Creates an [WxListTileTheme] that controls the style of
   /// descendant widgets, and merges in the current [WxListTileTheme], if any.

@@ -14,10 +14,10 @@ class WxTextTileTheme extends InheritedTheme {
   /// Creates a theme that controls
   /// how descendant [WxTextTileTheme]s should look like.
   const WxTextTileTheme({
-    Key? key,
+    super.key,
     required this.data,
-    required Widget child,
-  }) : super(key: key, child: child);
+    required super.child,
+  });
 
   /// Creates an [WxTextTileTheme] that controls the style of
   /// descendant widgets, and merges in the current [WxTextTileTheme], if any.

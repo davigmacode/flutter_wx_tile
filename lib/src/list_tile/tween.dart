@@ -10,8 +10,7 @@ class WxListTileStyleTween extends Tween<WxListTileStyle?> {
   ///
   /// the [begin] and [end] properties may be null; see [WxListTileStyle.lerp] for
   /// the null handling semantics.
-  WxListTileStyleTween({WxListTileStyle? begin, WxListTileStyle? end})
-      : super(begin: begin, end: end);
+  WxListTileStyleTween({super.begin, super.end});
 
   /// Returns the value this tween has at the given animation clock value.
   @override
@@ -28,9 +27,7 @@ class WxListTileThemeDataTween extends Tween<WxListTileThemeData?> {
   ///
   /// the [begin] and [end] properties may be null; see [TileThemeData.lerp] for
   /// the null handling semantics.
-  WxListTileThemeDataTween(
-      {WxListTileThemeData? begin, WxListTileThemeData? end})
-      : super(begin: begin, end: end);
+  WxListTileThemeDataTween({super.begin, super.end});
 
   /// Returns the value this tween has at the given animation clock value.
   @override

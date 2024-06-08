@@ -6,7 +6,7 @@ import 'theme.dart';
 class WxTile extends StatelessWidget {
   /// Create a basic tile
   const WxTile({
-    Key? key,
+    super.key,
     this.direction,
     this.crossAxisAlignment,
     this.mainAxisAlignment,
@@ -19,7 +19,7 @@ class WxTile extends StatelessWidget {
     this.trailing,
     this.leading,
     required this.child,
-  }) : super(key: key);
+  });
 
   /// {@macro WxTile.direction}
   final Axis? direction;
