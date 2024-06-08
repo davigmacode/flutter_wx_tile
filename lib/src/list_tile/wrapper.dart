@@ -25,7 +25,6 @@ class WxListTileContext {
 
 abstract class WxListTileWrapper {
   static WxListTileBuilder inkWell({
-    MaterialStateProperty<Color?>? overlayColor,
     Color? hoverColor,
     Color? highlightColor,
     Color? splashColor,
@@ -35,7 +34,6 @@ abstract class WxListTileWrapper {
     return (context, widget) {
       if (widget.onTap != null) {
         return InkWell(
-          overlayColor: overlayColor,
           hoverColor: hoverColor,
           highlightColor: highlightColor,
           splashColor: splashColor,
