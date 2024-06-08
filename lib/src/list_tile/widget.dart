@@ -216,3 +216,39 @@ class WxListTile extends StatelessWidget {
     effectiveStyle.debugFillProperties(properties);
   }
 }
+
+/// An inline tile is a compact version of [WxListTile]. It
+/// removes some of the visual separation between the leading, title,
+/// and trailing widgets, creating a more condensed appearance.
+class WxInlineTile extends WxListTile {
+  /// Creates an inline tile, a compact version of [WxListTile].
+  ///
+  /// By default, all the properties from [WxListTile] are inherited,
+  /// however the `inline` property is always set to `true`.
+  const WxInlineTile({
+    super.key,
+    required super.title,
+    super.subtitle,
+    super.leading,
+    super.trailing,
+    super.margin,
+    super.padding,
+    super.spacing,
+    super.spacingEnforced,
+    super.crossAxisAlignment,
+    super.mainAxisAlignment,
+    super.textExpanded,
+    super.textAlign,
+    super.textSpacing,
+    super.textColor,
+    super.iconColor,
+    super.titleStyle,
+    super.subtitleStyle,
+    super.secondaryStyle,
+    super.style,
+    super.onTap,
+  });
+
+  @override
+  bool get inline => true;
+}
