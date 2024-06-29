@@ -43,10 +43,10 @@ class WxTileStyle with Diagnosticable {
   /// {@endtemplate}
   final bool? inline;
 
-  /// {@template WxTile.childExpanded}
+  /// {@template WxTile.childWrap}
   /// Controls how the child widget fills its available space (expand or wrap content).
   /// {@endtemplate}
-  final bool? childExpanded;
+  final bool? childWrap;
 
   /// Create a raw [WxTileStyle]
   const WxTileStyle({
@@ -57,7 +57,7 @@ class WxTileStyle with Diagnosticable {
     this.align,
     this.justify,
     this.inline,
-    this.childExpanded,
+    this.childWrap,
   });
 
   /// Create a [WxTileStyle] with default value
@@ -69,7 +69,7 @@ class WxTileStyle with Diagnosticable {
         align = WxTileAlign.center,
         justify = WxTileJustify.start,
         inline = true,
-        childExpanded = false;
+        childWrap = true;
 
   /// Create a [WxTileStyle] from another style
   WxTileStyle.from(WxTileStyle? other)
@@ -80,7 +80,7 @@ class WxTileStyle with Diagnosticable {
         align = other?.align,
         justify = other?.justify,
         inline = other?.inline,
-        childExpanded = other?.childExpanded;
+        childWrap = other?.childWrap;
 
   /// Creates a copy of this [WxTileStyle] but with
   /// the given fields replaced with the new values.
@@ -92,7 +92,7 @@ class WxTileStyle with Diagnosticable {
     WxTileAlign? align,
     WxTileJustify? justify,
     bool? inline,
-    bool? childExpanded,
+    bool? childWrap,
   }) {
     return WxTileStyle(
       direction: direction ?? this.direction,
@@ -102,7 +102,7 @@ class WxTileStyle with Diagnosticable {
       align: align ?? this.align,
       justify: justify ?? this.justify,
       inline: inline ?? this.inline,
-      childExpanded: childExpanded ?? this.childExpanded,
+      childWrap: childWrap ?? this.childWrap,
     );
   }
 
@@ -120,7 +120,7 @@ class WxTileStyle with Diagnosticable {
       align: other.align,
       justify: other.justify,
       inline: other.inline,
-      childExpanded: other.childExpanded,
+      childWrap: other.childWrap,
     );
   }
 
@@ -135,7 +135,7 @@ class WxTileStyle with Diagnosticable {
       align: lerpEnum(a?.align, b?.align, t),
       justify: lerpEnum(a?.justify, b?.justify, t),
       inline: lerpBool(a?.inline, b?.inline, t),
-      childExpanded: lerpBool(a?.childExpanded, b?.childExpanded, t),
+      childWrap: lerpBool(a?.childWrap, b?.childWrap, t),
     );
   }
 
@@ -147,7 +147,7 @@ class WxTileStyle with Diagnosticable {
         'align': align,
         'justify': justify,
         'inline': inline,
-        'childExpanded': childExpanded,
+        'childWrap': childWrap,
       };
 
   @override

@@ -22,7 +22,7 @@ class WxListTile extends StatelessWidget {
     this.align,
     this.justify,
     this.inline,
-    this.textExpanded,
+    this.textWrap,
     this.textAlign,
     this.textSpacing,
     this.textColor,
@@ -67,8 +67,8 @@ class WxListTile extends StatelessWidget {
   /// {@macro WxListTile.inline}
   final bool? inline;
 
-  /// {@macro WxListTile.textExpanded}
-  final bool? textExpanded;
+  /// {@macro WxListTile.textWrap}
+  final bool? textWrap;
 
   /// {@macro WxListTile.textAlign}
   final TextAlign? textAlign;
@@ -107,7 +107,7 @@ class WxListTile extends StatelessWidget {
       align: align,
       justify: justify,
       inline: inline,
-      textExpanded: textExpanded,
+      textWrap: textWrap,
       textAlign: textAlign,
       textSpacing: textSpacing,
       textColor: textColor,
@@ -171,7 +171,7 @@ class WxListTile extends StatelessWidget {
           align: themedStyle.align,
           justify: themedStyle.justify,
           inline: themedStyle.inline,
-          childExpanded: themedStyle.textExpanded,
+          childWrap: themedStyle.textWrap,
           leading: leadingWidget,
           trailing: trailingWidget,
           child: WxTextTile(
@@ -237,7 +237,7 @@ class WxInlineTile extends WxListTile {
     super.spacingEnforced,
     super.align,
     super.justify,
-    super.textExpanded,
+    super.textWrap,
     super.textAlign,
     super.textSpacing,
     super.textColor,

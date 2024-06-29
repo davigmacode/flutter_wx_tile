@@ -43,12 +43,12 @@ class WxListTileStyle with Diagnosticable {
   /// {@endtemplate}
   final bool? inline;
 
-  /// {@template WxListTile.textExpanded}
+  /// {@template WxListTile.textWrap}
   /// Controls how the child widget (title and subtitle)
   /// fills its available space (expand or wrap content).
   /// {@endtemplate}
   ///
-  final bool? textExpanded;
+  final bool? textWrap;
 
   /// {@template WxListTile.textAlign}
   /// How the title and subtitle should be placed along the cross axis.
@@ -104,7 +104,7 @@ class WxListTileStyle with Diagnosticable {
     this.align,
     this.justify,
     this.inline,
-    this.textExpanded,
+    this.textWrap,
     this.textAlign,
     this.textSpacing,
     this.textColor,
@@ -128,7 +128,7 @@ class WxListTileStyle with Diagnosticable {
         align = WxTileAlign.center,
         justify = WxTileJustify.spaceBetween,
         inline = false,
-        textExpanded = true,
+        textWrap = false,
         textAlign = TextAlign.left,
         textSpacing = 0.0,
         textColor = null,
@@ -146,7 +146,7 @@ class WxListTileStyle with Diagnosticable {
     this.align,
     this.justify,
     this.inline,
-    this.textExpanded,
+    this.textWrap,
     this.textAlign,
     this.textSpacing,
     this.textColor,
@@ -168,7 +168,7 @@ class WxListTileStyle with Diagnosticable {
         align = other?.align,
         justify = other?.justify,
         inline = other?.inline,
-        textExpanded = other?.textExpanded,
+        textWrap = other?.textWrap,
         textAlign = other?.textAlign,
         textSpacing = other?.textSpacing,
         textColor = other?.textColor,
@@ -189,7 +189,7 @@ class WxListTileStyle with Diagnosticable {
     WxTileAlign? align,
     WxTileJustify? justify,
     bool? inline,
-    bool? textExpanded,
+    bool? textWrap,
     TextAlign? textAlign,
     double? textSpacing,
     Color? textColor,
@@ -208,7 +208,7 @@ class WxListTileStyle with Diagnosticable {
       align: align ?? this.align,
       justify: justify ?? this.justify,
       inline: inline ?? this.inline,
-      textExpanded: textExpanded ?? this.textExpanded,
+      textWrap: textWrap ?? this.textWrap,
       textAlign: textAlign ?? this.textAlign,
       textSpacing: textSpacing ?? this.textSpacing,
       textColor: textColor ?? this.textColor,
@@ -235,7 +235,7 @@ class WxListTileStyle with Diagnosticable {
       align: other.align,
       justify: other.justify,
       inline: other.inline,
-      textExpanded: other.textExpanded,
+      textWrap: other.textWrap,
       textAlign: other.textAlign,
       textSpacing: other.textSpacing,
       textColor: other.textColor,
@@ -263,7 +263,7 @@ class WxListTileStyle with Diagnosticable {
       align: lerpEnum(a?.align, b?.align, t),
       justify: lerpEnum(a?.justify, b?.justify, t),
       inline: lerpBool(a?.inline, b?.inline, t),
-      textExpanded: lerpBool(a?.textExpanded, b?.textExpanded, t),
+      textWrap: lerpBool(a?.textWrap, b?.textWrap, t),
       textAlign: lerpEnum(a?.textAlign, b?.textAlign, t),
       textSpacing: lerpDouble(a?.textSpacing, b?.textSpacing, t),
       textColor: Color.lerp(a?.textColor, b?.textColor, t),
@@ -284,7 +284,7 @@ class WxListTileStyle with Diagnosticable {
         'align': align,
         'justify': justify,
         'inline': inline,
-        'childExpanded': textExpanded,
+        'textWrap': textWrap,
         'textAlign': textAlign,
         'textSpacing': textSpacing,
         'textColor': textColor,
