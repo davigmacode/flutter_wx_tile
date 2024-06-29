@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lerp/lerp.dart';
+import '../tile/types.dart';
 
 /// The style to be applied to [WxListTile] widget
 @immutable
@@ -27,15 +28,15 @@ class WxListTileStyle with Diagnosticable {
   /// {@endtemplate}
   final bool? spacingEnforced;
 
-  /// {@template WxListTile.crossAxisAlignment}
+  /// {@template WxListTile.align}
   /// How the children should be placed along the cross axis.
   /// {@endtemplate}
-  final CrossAxisAlignment? crossAxisAlignment;
+  final WxTileAlign? align;
 
-  /// {@template WxListTile.mainAxisAlignment}
+  /// {@template WxListTile.justify}
   /// How the children should be placed along the main axis.
   /// {@endtemplate}
-  final MainAxisAlignment? mainAxisAlignment;
+  final WxTileJustify? justify;
 
   /// {@template WxListTile.inline}
   /// Controls whether to minimize or maximize the amount of free space.
@@ -100,8 +101,8 @@ class WxListTileStyle with Diagnosticable {
     this.padding,
     this.spacing,
     this.spacingEnforced,
-    this.crossAxisAlignment,
-    this.mainAxisAlignment,
+    this.align,
+    this.justify,
     this.inline,
     this.textExpanded,
     this.textAlign,
@@ -124,8 +125,8 @@ class WxListTileStyle with Diagnosticable {
         ),
         spacing = 16.0,
         spacingEnforced = true,
-        crossAxisAlignment = CrossAxisAlignment.center,
-        mainAxisAlignment = MainAxisAlignment.spaceBetween,
+        align = WxTileAlign.center,
+        justify = WxTileJustify.spaceBetween,
         inline = false,
         textExpanded = true,
         textAlign = TextAlign.left,
@@ -142,8 +143,8 @@ class WxListTileStyle with Diagnosticable {
   const WxListTileStyle.dense({
     this.margin,
     this.spacingEnforced,
-    this.crossAxisAlignment,
-    this.mainAxisAlignment,
+    this.align,
+    this.justify,
     this.inline,
     this.textExpanded,
     this.textAlign,
@@ -164,8 +165,8 @@ class WxListTileStyle with Diagnosticable {
         padding = other?.padding,
         spacing = other?.spacing,
         spacingEnforced = other?.spacingEnforced,
-        crossAxisAlignment = other?.crossAxisAlignment,
-        mainAxisAlignment = other?.mainAxisAlignment,
+        align = other?.align,
+        justify = other?.justify,
         inline = other?.inline,
         textExpanded = other?.textExpanded,
         textAlign = other?.textAlign,
@@ -185,8 +186,8 @@ class WxListTileStyle with Diagnosticable {
     EdgeInsetsGeometry? padding,
     double? spacing,
     bool? spacingEnforced,
-    CrossAxisAlignment? crossAxisAlignment,
-    MainAxisAlignment? mainAxisAlignment,
+    WxTileAlign? align,
+    WxTileJustify? justify,
     bool? inline,
     bool? textExpanded,
     TextAlign? textAlign,
@@ -204,8 +205,8 @@ class WxListTileStyle with Diagnosticable {
       padding: padding ?? this.padding,
       spacing: spacing ?? this.spacing,
       spacingEnforced: spacingEnforced ?? this.spacingEnforced,
-      crossAxisAlignment: crossAxisAlignment ?? this.crossAxisAlignment,
-      mainAxisAlignment: mainAxisAlignment ?? this.mainAxisAlignment,
+      align: align ?? this.align,
+      justify: justify ?? this.justify,
       inline: inline ?? this.inline,
       textExpanded: textExpanded ?? this.textExpanded,
       textAlign: textAlign ?? this.textAlign,
@@ -231,8 +232,8 @@ class WxListTileStyle with Diagnosticable {
       padding: other.padding,
       spacing: other.spacing,
       spacingEnforced: other.spacingEnforced,
-      crossAxisAlignment: other.crossAxisAlignment,
-      mainAxisAlignment: other.mainAxisAlignment,
+      align: other.align,
+      justify: other.justify,
       inline: other.inline,
       textExpanded: other.textExpanded,
       textAlign: other.textAlign,
@@ -259,10 +260,8 @@ class WxListTileStyle with Diagnosticable {
       padding: EdgeInsetsGeometry.lerp(a?.padding, b?.padding, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       spacingEnforced: lerpBool(a?.spacingEnforced, b?.spacingEnforced, t),
-      crossAxisAlignment:
-          lerpEnum(a?.crossAxisAlignment, b?.crossAxisAlignment, t),
-      mainAxisAlignment:
-          lerpEnum(a?.mainAxisAlignment, b?.mainAxisAlignment, t),
+      align: lerpEnum(a?.align, b?.align, t),
+      justify: lerpEnum(a?.justify, b?.justify, t),
       inline: lerpBool(a?.inline, b?.inline, t),
       textExpanded: lerpBool(a?.textExpanded, b?.textExpanded, t),
       textAlign: lerpEnum(a?.textAlign, b?.textAlign, t),
@@ -282,8 +281,8 @@ class WxListTileStyle with Diagnosticable {
         'padding': padding,
         'spacing': spacing,
         'spacingEnforced': spacingEnforced,
-        'crossAxisAlignment': crossAxisAlignment,
-        'mainAxisAlignment': mainAxisAlignment,
+        'align': align,
+        'justify': justify,
         'inline': inline,
         'childExpanded': textExpanded,
         'textAlign': textAlign,

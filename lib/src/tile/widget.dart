@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'style.dart';
+import 'types.dart';
 import 'theme.dart';
 
 class WxTile extends StatelessWidget {
@@ -8,8 +9,8 @@ class WxTile extends StatelessWidget {
   const WxTile({
     super.key,
     this.direction,
-    this.crossAxisAlignment,
-    this.mainAxisAlignment,
+    this.align,
+    this.justify,
     this.inline,
     this.childExpanded,
     this.spacingEnforced,
@@ -24,11 +25,11 @@ class WxTile extends StatelessWidget {
   /// {@macro WxTile.direction}
   final Axis? direction;
 
-  /// {@macro WxTile.crossAxisAlignment}
-  final CrossAxisAlignment? crossAxisAlignment;
+  /// {@macro WxTile.align}
+  final WxTileAlign? align;
 
-  /// {@macro WxTile.mainAxisAlignment}
-  final MainAxisAlignment? mainAxisAlignment;
+  /// {@macro WxTile.justify}
+  final WxTileJustify? justify;
 
   /// {@macro WxTile.inline}
   final bool? inline;
@@ -66,8 +67,8 @@ class WxTile extends StatelessWidget {
           margin: margin,
           spacing: spacing,
           spacingEnforced: spacingEnforced,
-          crossAxisAlignment: crossAxisAlignment,
-          mainAxisAlignment: mainAxisAlignment,
+          align: align,
+          justify: justify,
           inline: inline,
           childExpanded: childExpanded,
         );
@@ -90,8 +91,8 @@ class WxTile extends StatelessWidget {
 
     Widget content = Flex(
       direction: themedStyle.direction!,
-      mainAxisAlignment: themedStyle.mainAxisAlignment!,
-      crossAxisAlignment: themedStyle.crossAxisAlignment!,
+      mainAxisAlignment: themedStyle.justify!,
+      crossAxisAlignment: themedStyle.align!,
       mainAxisSize: isInline ? MainAxisSize.min : MainAxisSize.max,
       children: [
         leading,

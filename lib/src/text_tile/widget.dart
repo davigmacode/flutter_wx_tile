@@ -182,12 +182,12 @@ class WxTextTile extends StatelessWidget {
 
     return WxTile(
       direction: Axis.vertical,
-      mainAxisAlignment: MainAxisAlignment.start,
+      justify: MainAxisAlignment.start,
       inline: true,
       spacingEnforced: false,
       spacing: themedStyle.spacing,
       margin: themedStyle.margin,
-      crossAxisAlignment: getCrossAxisAlignment(context),
+      align: getCrossAxisAlignment(context),
       trailing: subtitleText,
       child: titleText,
     );

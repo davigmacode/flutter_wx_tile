@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import '../tile/types.dart';
 import '../tile/widget.dart';
 import '../text_tile/widget.dart';
 import 'style.dart';
@@ -18,8 +19,8 @@ class WxListTile extends StatelessWidget {
     this.padding,
     this.spacing,
     this.spacingEnforced,
-    this.crossAxisAlignment,
-    this.mainAxisAlignment,
+    this.align,
+    this.justify,
     this.inline,
     this.textExpanded,
     this.textAlign,
@@ -57,11 +58,11 @@ class WxListTile extends StatelessWidget {
   /// {@macro WxListTile.spacingEnforced}
   final bool? spacingEnforced;
 
-  /// {@macro WxListTile.crossAxisAlignment}
-  final CrossAxisAlignment? crossAxisAlignment;
+  /// {@macro WxListTile.align}
+  final WxTileAlign? align;
 
-  /// {@macro WxListTile.mainAxisAlignment}
-  final MainAxisAlignment? mainAxisAlignment;
+  /// {@macro WxListTile.justify}
+  final WxTileJustify? justify;
 
   /// {@macro WxListTile.inline}
   final bool? inline;
@@ -103,8 +104,8 @@ class WxListTile extends StatelessWidget {
       padding: padding,
       spacing: spacing,
       spacingEnforced: spacingEnforced,
-      crossAxisAlignment: crossAxisAlignment,
-      mainAxisAlignment: mainAxisAlignment,
+      align: align,
+      justify: justify,
       inline: inline,
       textExpanded: textExpanded,
       textAlign: textAlign,
@@ -167,8 +168,8 @@ class WxListTile extends StatelessWidget {
           margin: themedStyle.padding,
           spacing: themedStyle.spacing,
           spacingEnforced: themedStyle.spacingEnforced,
-          crossAxisAlignment: themedStyle.crossAxisAlignment,
-          mainAxisAlignment: themedStyle.mainAxisAlignment,
+          align: themedStyle.align,
+          justify: themedStyle.justify,
           inline: themedStyle.inline,
           childExpanded: themedStyle.textExpanded,
           leading: leadingWidget,
@@ -234,8 +235,8 @@ class WxInlineTile extends WxListTile {
     super.padding,
     super.spacing,
     super.spacingEnforced,
-    super.crossAxisAlignment,
-    super.mainAxisAlignment,
+    super.align,
+    super.justify,
     super.textExpanded,
     super.textAlign,
     super.textSpacing,

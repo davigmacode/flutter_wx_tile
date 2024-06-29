@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lerp/lerp.dart';
+import 'types.dart';
 
 /// The style to be applied to [WxTile] widget
 @immutable
@@ -27,15 +28,15 @@ class WxTileStyle with Diagnosticable {
   /// {@endtemplate}
   final bool? spacingEnforced;
 
-  /// {@template WxTile.crossAxisAlignment}
+  /// {@template WxTile.align}
   /// How the children should be placed along the cross axis.
   /// {@endtemplate}
-  final CrossAxisAlignment? crossAxisAlignment;
+  final WxTileAlign? align;
 
-  /// {@template WxTile.mainAxisAlignment}
+  /// {@template WxTile.justify}
   /// How the children should be placed along the main axis.
   /// {@endtemplate}
-  final MainAxisAlignment? mainAxisAlignment;
+  final WxTileJustify? justify;
 
   /// {@template WxTile.inline}
   /// Controls whether to minimize or maximize the amount of free space.
@@ -53,8 +54,8 @@ class WxTileStyle with Diagnosticable {
     this.margin,
     this.spacing,
     this.spacingEnforced,
-    this.crossAxisAlignment,
-    this.mainAxisAlignment,
+    this.align,
+    this.justify,
     this.inline,
     this.childExpanded,
   });
@@ -65,8 +66,8 @@ class WxTileStyle with Diagnosticable {
         margin = EdgeInsets.zero,
         spacing = 0.0,
         spacingEnforced = false,
-        crossAxisAlignment = CrossAxisAlignment.center,
-        mainAxisAlignment = MainAxisAlignment.start,
+        align = WxTileAlign.center,
+        justify = WxTileJustify.start,
         inline = true,
         childExpanded = false;
 
@@ -76,8 +77,8 @@ class WxTileStyle with Diagnosticable {
         margin = other?.margin,
         spacing = other?.spacing,
         spacingEnforced = other?.spacingEnforced,
-        crossAxisAlignment = other?.crossAxisAlignment,
-        mainAxisAlignment = other?.mainAxisAlignment,
+        align = other?.align,
+        justify = other?.justify,
         inline = other?.inline,
         childExpanded = other?.childExpanded;
 
@@ -88,8 +89,8 @@ class WxTileStyle with Diagnosticable {
     EdgeInsetsGeometry? margin,
     double? spacing,
     bool? spacingEnforced,
-    CrossAxisAlignment? crossAxisAlignment,
-    MainAxisAlignment? mainAxisAlignment,
+    WxTileAlign? align,
+    WxTileJustify? justify,
     bool? inline,
     bool? childExpanded,
   }) {
@@ -98,8 +99,8 @@ class WxTileStyle with Diagnosticable {
       margin: margin ?? this.margin,
       spacing: spacing ?? this.spacing,
       spacingEnforced: spacingEnforced ?? this.spacingEnforced,
-      crossAxisAlignment: crossAxisAlignment ?? this.crossAxisAlignment,
-      mainAxisAlignment: mainAxisAlignment ?? this.mainAxisAlignment,
+      align: align ?? this.align,
+      justify: justify ?? this.justify,
       inline: inline ?? this.inline,
       childExpanded: childExpanded ?? this.childExpanded,
     );
@@ -116,8 +117,8 @@ class WxTileStyle with Diagnosticable {
       margin: other.margin,
       spacing: other.spacing,
       spacingEnforced: other.spacingEnforced,
-      crossAxisAlignment: other.crossAxisAlignment,
-      mainAxisAlignment: other.mainAxisAlignment,
+      align: other.align,
+      justify: other.justify,
       inline: other.inline,
       childExpanded: other.childExpanded,
     );
@@ -131,10 +132,8 @@ class WxTileStyle with Diagnosticable {
       margin: EdgeInsetsGeometry.lerp(a?.margin, b?.margin, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       spacingEnforced: lerpBool(a?.spacingEnforced, b?.spacingEnforced, t),
-      crossAxisAlignment:
-          lerpEnum(a?.crossAxisAlignment, b?.crossAxisAlignment, t),
-      mainAxisAlignment:
-          lerpEnum(a?.mainAxisAlignment, b?.mainAxisAlignment, t),
+      align: lerpEnum(a?.align, b?.align, t),
+      justify: lerpEnum(a?.justify, b?.justify, t),
       inline: lerpBool(a?.inline, b?.inline, t),
       childExpanded: lerpBool(a?.childExpanded, b?.childExpanded, t),
     );
@@ -145,8 +144,8 @@ class WxTileStyle with Diagnosticable {
         'margin': margin,
         'spacing': spacing,
         'spacingEnforced': spacingEnforced,
-        'crossAxisAlignment': crossAxisAlignment,
-        'mainAxisAlignment': mainAxisAlignment,
+        'align': align,
+        'justify': justify,
         'inline': inline,
         'childExpanded': childExpanded,
       };
