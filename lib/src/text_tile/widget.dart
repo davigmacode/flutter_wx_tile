@@ -11,12 +11,17 @@ class WxTextTile extends StatelessWidget {
     this.margin,
     this.align,
     this.color,
+    this.overflow,
+    this.softWrap,
+    this.widthBasis,
     this.titleStyle,
     this.titleColor,
     this.titleSize,
+    this.titleMaxLines,
     this.subtitleStyle,
     this.subtitleColor,
     this.subtitleSize,
+    this.subtitleMaxLines,
     this.style,
     required this.title,
     this.subtitle,
@@ -34,6 +39,15 @@ class WxTextTile extends StatelessWidget {
   /// {@macro WxTextTile.color}
   final Color? color;
 
+  /// {@macro WxTextTile.overflow}
+  final TextOverflow? overflow;
+
+  /// {@macro WxTextTile.softWrap}
+  final bool? softWrap;
+
+  /// {@macro WxTextTile.widthBasis}
+  final TextWidthBasis? widthBasis;
+
   /// {@macro WxTextTile.titleStyle}
   final TextStyle? titleStyle;
 
@@ -43,6 +57,11 @@ class WxTextTile extends StatelessWidget {
   /// {@macro WxTextTile.titleSize}
   final double? titleSize;
 
+  /// {@template WxTextTile.titleMaxLines}
+  /// The text max lines to be applied to title.
+  /// {@endtemplate}
+  final int? titleMaxLines;
+
   /// {@macro WxTextTile.subtitleStyle}
   final TextStyle? subtitleStyle;
 
@@ -51,6 +70,9 @@ class WxTextTile extends StatelessWidget {
 
   /// {@macro WxTextTile.subtitleSize}
   final double? subtitleSize;
+
+  /// {@macro WxTextTile.subtitleMaxLines}
+  final int? subtitleMaxLines;
 
   /// The style to be applied
   final WxTextTileStyle? style;
@@ -67,12 +89,17 @@ class WxTextTile extends StatelessWidget {
       margin: margin,
       align: align,
       color: color,
+      overflow: overflow,
+      softWrap: softWrap,
+      widthBasis: widthBasis,
       titleStyle: titleStyle,
       titleColor: titleColor,
       titleSize: titleSize,
+      titleMaxLines: titleMaxLines,
       subtitleStyle: subtitleStyle,
       subtitleColor: subtitleColor,
       subtitleSize: subtitleSize,
+      subtitleMaxLines: subtitleMaxLines,
     );
   }
 
@@ -123,6 +150,10 @@ class WxTextTile extends StatelessWidget {
         fontSize: themedStyle.titleSize,
       ),
       textAlign: themedStyle.align,
+      textWidthBasis: themedStyle.widthBasis,
+      softWrap: themedStyle.softWrap,
+      overflow: themedStyle.overflow,
+      maxLines: themedStyle.titleMaxLines,
       child: title,
     );
 
@@ -141,6 +172,10 @@ class WxTextTile extends StatelessWidget {
           fontSize: themedStyle.subtitleSize,
         ),
         textAlign: themedStyle.align,
+        textWidthBasis: themedStyle.widthBasis,
+        softWrap: themedStyle.softWrap,
+        overflow: themedStyle.overflow,
+        maxLines: themedStyle.titleMaxLines,
         child: subtitle!,
       );
     }
