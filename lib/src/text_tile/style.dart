@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lerp/lerp.dart';
-import 'types.dart';
 
 /// The style to be applied to [WxTextTile] widget
 @immutable
@@ -19,7 +18,7 @@ class WxTextTileStyle with Diagnosticable {
   /// {@template WxTextTile.align}
   /// How the title and subtitle should be placed along the cross axis.
   /// {@endtemplate}
-  final WxTextAlign? align;
+  final TextAlign? align;
 
   /// {@template WxTextTile.titleStyle}
   /// The text style to be applied to title.
@@ -46,19 +45,6 @@ class WxTextTileStyle with Diagnosticable {
   /// {@endtemplate}
   final Color? textColor;
 
-  /// [CrossAxisAlignment] from [align]
-  CrossAxisAlignment get crossAxisAlignment {
-    switch (align) {
-      case WxTextAlign.center:
-        return CrossAxisAlignment.center;
-      case WxTextAlign.right:
-        return CrossAxisAlignment.end;
-      case WxTextAlign.left:
-      default:
-        return CrossAxisAlignment.start;
-    }
-  }
-
   /// Create a raw [WxTextTileStyle]
   const WxTextTileStyle({
     this.spacing,
@@ -75,7 +61,7 @@ class WxTextTileStyle with Diagnosticable {
   const WxTextTileStyle.defaults()
       : spacing = 0.0,
         margin = EdgeInsets.zero,
-        align = WxTextAlign.left,
+        align = TextAlign.left,
         titleStyle = null,
         titleSize = null,
         subtitleStyle = null,
@@ -98,7 +84,7 @@ class WxTextTileStyle with Diagnosticable {
   WxTextTileStyle copyWith({
     double? spacing,
     EdgeInsetsGeometry? margin,
-    WxTextAlign? align,
+    TextAlign? align,
     TextStyle? titleStyle,
     double? titleSize,
     TextStyle? subtitleStyle,

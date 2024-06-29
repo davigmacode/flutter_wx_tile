@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../tile/widget.dart';
 import 'style.dart';
-import 'types.dart';
 import 'theme.dart';
 
 class WxTextTile extends StatelessWidget {
@@ -28,7 +27,7 @@ class WxTextTile extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
 
   /// {@macro WxTextTile.align}
-  final WxTextAlign? align;
+  final TextAlign? align;
 
   /// The style to be applied
   final WxTextTileStyle? style;
@@ -67,6 +66,33 @@ class WxTextTile extends StatelessWidget {
     );
   }
 
+  /// [CrossAxisAlignment] from [align]
+  CrossAxisAlignment getCrossAxisAlignment(BuildContext context) {
+    final direction = Directionality.of(context);
+    switch (effectiveStyle.align) {
+      case TextAlign.start:
+        if (direction == TextDirection.ltr) {
+          return CrossAxisAlignment.start;
+        } else {
+          return CrossAxisAlignment.end;
+        }
+      case TextAlign.end:
+        if (direction == TextDirection.rtl) {
+          return CrossAxisAlignment.start;
+        } else {
+          return CrossAxisAlignment.end;
+        }
+      case TextAlign.center:
+        return CrossAxisAlignment.center;
+      case TextAlign.right:
+        return CrossAxisAlignment.end;
+      case TextAlign.left:
+      case TextAlign.justify:
+      default:
+        return CrossAxisAlignment.start;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final tileTheme = WxTextTileTheme.of(context);
@@ -86,6 +112,7 @@ class WxTextTile extends StatelessWidget {
         color: themedStyle.textColor,
         fontSize: themedStyle.titleSize,
       ),
+      textAlign: themedStyle.align,
       child: title,
     );
 
@@ -103,6 +130,7 @@ class WxTextTile extends StatelessWidget {
           color: themedStyle.textColor,
           fontSize: themedStyle.subtitleSize,
         ),
+        textAlign: themedStyle.align,
         child: subtitle!,
       );
     }
@@ -114,7 +142,7 @@ class WxTextTile extends StatelessWidget {
       spacingEnforced: false,
       spacing: themedStyle.spacing,
       margin: themedStyle.margin,
-      crossAxisAlignment: themedStyle.crossAxisAlignment,
+      crossAxisAlignment: getCrossAxisAlignment(context),
       trailing: subtitleText,
       child: titleText,
     );

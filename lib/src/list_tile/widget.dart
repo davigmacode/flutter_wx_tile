@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../tile/widget.dart';
-import '../text_tile/types.dart';
 import '../text_tile/widget.dart';
 import 'style.dart';
 import 'wrapper.dart';
@@ -71,7 +70,7 @@ class WxListTile extends StatelessWidget {
   final bool? textExpanded;
 
   /// {@macro WxListTile.textAlign}
-  final WxTextAlign? textAlign;
+  final TextAlign? textAlign;
 
   /// {@macro WxListTile.textSpacing}
   final double? textSpacing;

@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lerp/lerp.dart';
-import '../text_tile/types.dart';
 
 /// The style to be applied to [WxListTile] widget
 @immutable
@@ -53,7 +52,7 @@ class WxListTileStyle with Diagnosticable {
   /// {@template WxListTile.textAlign}
   /// How the title and subtitle should be placed along the cross axis.
   /// {@endtemplate}
-  final WxTextAlign? textAlign;
+  final TextAlign? textAlign;
 
   /// {@template WxListTile.textSpacing}
   /// The gap between the [title] and the [subtitle] widgets.
@@ -129,7 +128,7 @@ class WxListTileStyle with Diagnosticable {
         mainAxisAlignment = MainAxisAlignment.spaceBetween,
         inline = false,
         textExpanded = true,
-        textAlign = WxTextAlign.left,
+        textAlign = TextAlign.left,
         textSpacing = 0.0,
         textColor = null,
         iconColor = null,
@@ -190,7 +189,7 @@ class WxListTileStyle with Diagnosticable {
     MainAxisAlignment? mainAxisAlignment,
     bool? inline,
     bool? textExpanded,
-    WxTextAlign? textAlign,
+    TextAlign? textAlign,
     double? textSpacing,
     Color? textColor,
     Color? iconColor,
