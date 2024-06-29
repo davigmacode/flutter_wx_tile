@@ -22,7 +22,7 @@ WxTextTile(
   title: Text('Title'),
   subtitle: Text('Subtitle'),
   spacing: 5,
-  align: WxTextAlign.right,
+  align: TextAlign.right,
 )
 
 WxListTile(

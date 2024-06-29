@@ -1,3 +1,16 @@
+## 2.0.0
+
+* Refactor WxTextAlign to default TextAlign
+* Renamed prop TextTile textColor with color
+* Added prop titleColor and subtileColor to TextTile style
+* Added prop overflow, softWrap, widthBasis, title and subtitle max lines to TextTile
+* Refactor crossAxisAlignment to align and mainAxisAlignment to justify
+* Refactor childExpanded to childWrap and textExpanded to textWrap
+* Refactor spacingEnforced to adaptiveSpacing
+* Added more text option to ListTile style
+* Added option to set icon opacity and size
+* Added option to set title and subtitle font weight directly
+
 ## 1.1.2
 
 * Update preview
