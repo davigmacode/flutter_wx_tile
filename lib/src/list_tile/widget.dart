@@ -30,6 +30,8 @@ class WxListTile extends StatelessWidget {
     this.textSoftWrap,
     this.textWidthBasis,
     this.iconColor,
+    this.iconOpacity,
+    this.iconSize,
     this.titleSize,
     this.subtitleSize,
     this.titleColor,
@@ -100,6 +102,12 @@ class WxListTile extends StatelessWidget {
   /// {@macro WxListTile.iconColor}
   final Color? iconColor;
 
+  /// {@macro WxListTile.iconOpacity}
+  final double? iconOpacity;
+
+  /// {@macro WxListTile.iconSize}
+  final double? iconSize;
+
   /// {@macro WxListTile.titleSize}
   final double? titleSize;
 
@@ -151,6 +159,8 @@ class WxListTile extends StatelessWidget {
       textSoftWrap: textSoftWrap,
       textWidthBasis: textWidthBasis,
       iconColor: iconColor,
+      iconOpacity: iconOpacity,
+      iconSize: iconSize,
       titleSize: titleSize,
       subtitleSize: subtitleSize,
       titleColor: titleColor,
@@ -198,16 +208,19 @@ class WxListTile extends StatelessWidget {
       );
     }
 
-    final effectiveIconColor = themedStyle.iconColor;
-    final iconThemeData = IconThemeData(color: effectiveIconColor);
-    final iconButtonThemeData = IconButtonThemeData(
-      style: IconButton.styleFrom(foregroundColor: effectiveIconColor),
-    );
-
     Widget content = IconTheme.merge(
-      data: iconThemeData,
+      data: IconThemeData(
+        color: themedStyle.iconColor,
+        opacity: themedStyle.iconOpacity,
+        size: themedStyle.iconSize,
+      ),
       child: IconButtonTheme(
-        data: iconButtonThemeData,
+        data: IconButtonThemeData(
+          style: IconButton.styleFrom(
+            foregroundColor: themedStyle.iconColor,
+            iconSize: themedStyle.iconSize,
+          ),
+        ),
         child: WxTile(
           direction: Axis.horizontal,
           margin: themedStyle.padding,

@@ -81,9 +81,19 @@ class WxListTileStyle with Diagnosticable {
   final TextWidthBasis? textWidthBasis;
 
   /// {@template WxListTile.iconColor}
-  /// Defines the default color for [leading] and [trailing] icons.
+  /// Defines the default color for icons.
   /// {@endtemplate}
   final Color? iconColor;
+
+  /// {@template WxListTile.iconOpacity}
+  /// Defines the default opacity for icons.
+  /// {@endtemplate}
+  final double? iconOpacity;
+
+  /// {@template WxListTile.iconSize}
+  /// Defines the default size for icons.
+  /// {@endtemplate}
+  final double? iconSize;
 
   /// {@template WxListTile.titleStyle}
   /// The text style to be applied to title.
@@ -147,6 +157,8 @@ class WxListTileStyle with Diagnosticable {
     this.textSoftWrap,
     this.textWidthBasis,
     this.iconColor,
+    this.iconOpacity,
+    this.iconSize,
     this.titleStyle,
     this.subtitleStyle,
     this.secondaryStyle,
@@ -178,6 +190,8 @@ class WxListTileStyle with Diagnosticable {
         textSoftWrap = null,
         textWidthBasis = null,
         iconColor = null,
+        iconOpacity = null,
+        iconSize = null,
         titleStyle = null,
         subtitleStyle = null,
         secondaryStyle = null,
@@ -203,6 +217,8 @@ class WxListTileStyle with Diagnosticable {
     this.textSoftWrap,
     this.textWidthBasis,
     this.iconColor,
+    this.iconOpacity,
+    this.iconSize,
     this.titleStyle,
     this.subtitleStyle,
     this.secondaryStyle,
@@ -232,6 +248,8 @@ class WxListTileStyle with Diagnosticable {
         textSoftWrap = other?.textSoftWrap,
         textWidthBasis = other?.textWidthBasis,
         iconColor = other?.iconColor,
+        iconOpacity = other?.iconOpacity,
+        iconSize = other?.iconSize,
         titleStyle = other?.titleStyle,
         subtitleStyle = other?.subtitleStyle,
         secondaryStyle = other?.secondaryStyle,
@@ -260,6 +278,8 @@ class WxListTileStyle with Diagnosticable {
     bool? textSoftWrap,
     TextWidthBasis? textWidthBasis,
     Color? iconColor,
+    double? iconOpacity,
+    double? iconSize,
     TextStyle? titleStyle,
     TextStyle? subtitleStyle,
     TextStyle? secondaryStyle,
@@ -286,6 +306,8 @@ class WxListTileStyle with Diagnosticable {
       textSoftWrap: textSoftWrap ?? this.textSoftWrap,
       textWidthBasis: textWidthBasis ?? this.textWidthBasis,
       iconColor: iconColor ?? this.iconColor,
+      iconOpacity: iconOpacity ?? this.iconOpacity,
+      iconSize: iconSize ?? this.iconSize,
       titleStyle: titleStyle ?? this.titleStyle,
       subtitleStyle: subtitleStyle ?? this.subtitleStyle,
       secondaryStyle: secondaryStyle ?? this.secondaryStyle,
@@ -320,6 +342,8 @@ class WxListTileStyle with Diagnosticable {
       textSoftWrap: other.textSoftWrap,
       textWidthBasis: other.textWidthBasis,
       iconColor: other.iconColor,
+      iconOpacity: other.iconOpacity,
+      iconSize: other.iconSize,
       titleStyle: other.titleStyle,
       subtitleStyle: other.subtitleStyle,
       secondaryStyle: other.secondaryStyle,
@@ -355,6 +379,8 @@ class WxListTileStyle with Diagnosticable {
       textSoftWrap: lerpEnum(a?.textSoftWrap, b?.textSoftWrap, t),
       textWidthBasis: lerpEnum(a?.textWidthBasis, b?.textWidthBasis, t),
       iconColor: Color.lerp(a?.iconColor, b?.iconColor, t),
+      iconOpacity: lerpDouble(a?.iconOpacity, b?.iconOpacity, t),
+      iconSize: lerpDouble(a?.iconSize, b?.iconSize, t),
       titleStyle: TextStyle.lerp(a?.titleStyle, b?.titleStyle, t),
       subtitleStyle: TextStyle.lerp(a?.subtitleStyle, b?.subtitleStyle, t),
       secondaryStyle: TextStyle.lerp(a?.secondaryStyle, b?.secondaryStyle, t),
@@ -383,6 +409,8 @@ class WxListTileStyle with Diagnosticable {
         'textSoftWrap': textSoftWrap,
         'textWidthBasis': textWidthBasis,
         'iconColor': iconColor,
+        'iconOpacity': iconOpacity,
+        'iconSize': iconSize,
         'titleStyle': titleStyle,
         'subtitleStyle': subtitleStyle,
         'secondaryStyle': secondaryStyle,
