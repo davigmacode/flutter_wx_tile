@@ -30,6 +30,11 @@ class WxTextTileStyle with Diagnosticable {
   /// {@endtemplate}
   final TextStyle? titleStyle;
 
+  /// {@template WxTextTile.titleColor}
+  /// The text color to be applied to title.
+  /// {@endtemplate}
+  final Color? titleColor;
+
   /// {@template WxTextTile.titleSize}
   /// The font size to be applied to title.
   /// {@endtemplate}
@@ -39,6 +44,11 @@ class WxTextTileStyle with Diagnosticable {
   /// The text style to be applied to subtitle.
   /// {@endtemplate}
   final TextStyle? subtitleStyle;
+
+  /// {@template WxTextTile.subtitleColor}
+  /// The text color to be applied to subtitle.
+  /// {@endtemplate}
+  final Color? subtitleColor;
 
   /// {@template WxTextTile.subtitleSize}
   /// The font size to be applied to subtitle.
@@ -52,8 +62,10 @@ class WxTextTileStyle with Diagnosticable {
     this.align,
     this.color,
     this.titleStyle,
+    this.titleColor,
     this.titleSize,
     this.subtitleStyle,
+    this.subtitleColor,
     this.subtitleSize,
   });
 
@@ -63,8 +75,10 @@ class WxTextTileStyle with Diagnosticable {
         margin = EdgeInsets.zero,
         align = TextAlign.left,
         titleStyle = null,
+        titleColor = null,
         titleSize = null,
         subtitleStyle = null,
+        subtitleColor = null,
         subtitleSize = null,
         color = null;
 
@@ -74,8 +88,10 @@ class WxTextTileStyle with Diagnosticable {
         margin = other?.margin,
         align = other?.align,
         titleStyle = other?.titleStyle,
+        titleColor = other?.titleColor,
         titleSize = other?.titleSize,
         subtitleStyle = other?.subtitleStyle,
+        subtitleColor = other?.subtitleColor,
         subtitleSize = other?.subtitleSize,
         color = other?.color;
 
@@ -87,8 +103,10 @@ class WxTextTileStyle with Diagnosticable {
     TextAlign? align,
     Color? color,
     TextStyle? titleStyle,
+    Color? titleColor,
     double? titleSize,
     TextStyle? subtitleStyle,
+    Color? subtitleColor,
     double? subtitleSize,
   }) {
     return WxTextTileStyle(
@@ -97,8 +115,10 @@ class WxTextTileStyle with Diagnosticable {
       align: align ?? this.align,
       color: color ?? this.color,
       titleStyle: titleStyle ?? this.titleStyle,
+      titleColor: titleColor ?? this.titleColor,
       titleSize: titleSize ?? this.titleSize,
       subtitleStyle: subtitleStyle ?? this.subtitleStyle,
+      subtitleColor: subtitleColor ?? this.subtitleColor,
       subtitleSize: subtitleSize ?? this.subtitleSize,
     );
   }
@@ -115,8 +135,10 @@ class WxTextTileStyle with Diagnosticable {
       align: other.align,
       color: other.color,
       titleStyle: other.titleStyle,
+      titleColor: other.titleColor,
       titleSize: other.titleSize,
       subtitleStyle: other.subtitleStyle,
+      subtitleColor: other.subtitleColor,
       subtitleSize: other.subtitleSize,
     );
   }
@@ -134,8 +156,10 @@ class WxTextTileStyle with Diagnosticable {
       align: lerpEnum(a?.align, b?.align, t),
       color: Color.lerp(a?.color, b?.color, t),
       titleStyle: TextStyle.lerp(a?.titleStyle, b?.titleStyle, t),
+      titleColor: Color.lerp(a?.titleColor, b?.titleColor, t),
       titleSize: lerpDouble(a?.titleSize, b?.titleSize, t),
       subtitleStyle: TextStyle.lerp(a?.subtitleStyle, b?.subtitleStyle, t),
+      subtitleColor: Color.lerp(a?.subtitleColor, b?.subtitleColor, t),
       subtitleSize: lerpDouble(a?.subtitleSize, b?.subtitleSize, t),
     );
   }
@@ -146,8 +170,10 @@ class WxTextTileStyle with Diagnosticable {
         'align': align,
         'color': color,
         'titleStyle': titleStyle,
+        'titleColor': titleColor,
         'titleSize': titleSize,
         'subtitleStyle': subtitleStyle,
+        'subtitleColor': subtitleColor,
         'subtitleSize': subtitleSize,
       };
 
