@@ -26,7 +26,16 @@ class WxListTile extends StatelessWidget {
     this.textAlign,
     this.textSpacing,
     this.textColor,
+    this.textOverflow,
+    this.textSoftWrap,
+    this.textWidthBasis,
     this.iconColor,
+    this.titleSize,
+    this.subtitleSize,
+    this.titleColor,
+    this.subtitleColor,
+    this.titleMaxLines,
+    this.subtitleMaxLines,
     this.titleStyle,
     this.subtitleStyle,
     this.secondaryStyle,
@@ -79,8 +88,35 @@ class WxListTile extends StatelessWidget {
   /// {@macro WxListTile.textColor}
   final Color? textColor;
 
+  /// {@macro WxListTile.textOverflow}
+  final TextOverflow? textOverflow;
+
+  /// {@macro WxListTile.textSoftWrap}
+  final bool? textSoftWrap;
+
+  /// {@macro WxListTile.textWidthBasis}
+  final TextWidthBasis? textWidthBasis;
+
   /// {@macro WxListTile.iconColor}
   final Color? iconColor;
+
+  /// {@macro WxListTile.titleSize}
+  final double? titleSize;
+
+  /// {@macro WxListTile.subtitleSize}
+  final double? subtitleSize;
+
+  /// {@macro WxListTile.titleColor}
+  final Color? titleColor;
+
+  /// {@macro WxListTile.subtitleColor}
+  final Color? subtitleColor;
+
+  /// {@macro WxListTile.titleMaxLines}
+  final int? titleMaxLines;
+
+  /// {@macro WxListTile.subtitleMaxLines}
+  final int? subtitleMaxLines;
 
   /// {@macro WxListTile.titleStyle}
   final TextStyle? titleStyle;
@@ -111,7 +147,16 @@ class WxListTile extends StatelessWidget {
       textAlign: textAlign,
       textSpacing: textSpacing,
       textColor: textColor,
+      textOverflow: textOverflow,
+      textSoftWrap: textSoftWrap,
+      textWidthBasis: textWidthBasis,
       iconColor: iconColor,
+      titleSize: titleSize,
+      subtitleSize: subtitleSize,
+      titleColor: titleColor,
+      subtitleColor: subtitleColor,
+      titleMaxLines: titleMaxLines,
+      subtitleMaxLines: subtitleMaxLines,
       titleStyle: titleStyle,
       subtitleStyle: subtitleStyle,
       secondaryStyle: secondaryStyle,
@@ -182,8 +227,15 @@ class WxListTile extends StatelessWidget {
             align: themedStyle.textAlign,
             spacing: themedStyle.textSpacing,
             color: themedStyle.textColor,
+            overflow: themedStyle.textOverflow,
+            softWrap: themedStyle.textSoftWrap,
+            widthBasis: themedStyle.textWidthBasis,
             titleSize: themedStyle.titleSize,
             subtitleSize: themedStyle.subtitleSize,
+            titleColor: themedStyle.titleColor,
+            subtitleColor: themedStyle.subtitleColor,
+            titleMaxLines: themedStyle.titleMaxLines,
+            subtitleMaxLines: themedStyle.subtitleMaxLines,
           ),
         ),
       ),

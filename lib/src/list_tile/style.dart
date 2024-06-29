@@ -65,6 +65,21 @@ class WxListTileStyle with Diagnosticable {
   /// {@endtemplate}
   final Color? textColor;
 
+  /// {@template WxListTile.textOverflow}
+  /// The text overflow to be applied to title and subtitle.
+  /// {@endtemplate}
+  final TextOverflow? textOverflow;
+
+  /// {@template WxListTile.textSoftWrap}
+  /// The text softWrap to be applied to title and subtitle.
+  /// {@endtemplate}
+  final bool? textSoftWrap;
+
+  /// {@template WxListTile.textWidthBasis}
+  /// The text width basis to be applied to title and subtitle.
+  /// {@endtemplate}
+  final TextWidthBasis? textWidthBasis;
+
   /// {@template WxListTile.iconColor}
   /// Defines the default color for [leading] and [trailing] icons.
   /// {@endtemplate}
@@ -95,6 +110,26 @@ class WxListTileStyle with Diagnosticable {
   /// {@endtemplate}
   final double? subtitleSize;
 
+  /// {@template WxListTile.titleColor}
+  /// The text color to be applied to title.
+  /// {@endtemplate}
+  final Color? titleColor;
+
+  /// {@template WxListTile.subtitleColor}
+  /// The text color to be applied to subtitle.
+  /// {@endtemplate}
+  final Color? subtitleColor;
+
+  /// {@template WxListTile.titleMaxLines}
+  /// The text max lines to be applied to title.
+  /// {@endtemplate}
+  final int? titleMaxLines;
+
+  /// {@template WxListTile.subtitleMaxLines}
+  /// The text max lines to be applied to subtitle.
+  /// {@endtemplate}
+  final int? subtitleMaxLines;
+
   /// Create a raw [WxListTileStyle]
   const WxListTileStyle({
     this.margin,
@@ -108,12 +143,19 @@ class WxListTileStyle with Diagnosticable {
     this.textAlign,
     this.textSpacing,
     this.textColor,
+    this.textOverflow,
+    this.textSoftWrap,
+    this.textWidthBasis,
     this.iconColor,
     this.titleStyle,
     this.subtitleStyle,
     this.secondaryStyle,
     this.titleSize,
     this.subtitleSize,
+    this.titleColor,
+    this.subtitleColor,
+    this.titleMaxLines,
+    this.subtitleMaxLines,
   });
 
   /// Create a [WxListTileStyle] with some reasonable default values.
@@ -132,12 +174,19 @@ class WxListTileStyle with Diagnosticable {
         textAlign = TextAlign.left,
         textSpacing = 0.0,
         textColor = null,
+        textOverflow = null,
+        textSoftWrap = null,
+        textWidthBasis = null,
         iconColor = null,
         titleStyle = null,
         subtitleStyle = null,
         secondaryStyle = null,
         titleSize = null,
-        subtitleSize = null;
+        subtitleSize = null,
+        titleColor = null,
+        subtitleColor = null,
+        titleMaxLines = null,
+        subtitleMaxLines = null;
 
   /// Create a [WxListTileStyle] with some reasonable default values.
   const WxListTileStyle.dense({
@@ -150,10 +199,17 @@ class WxListTileStyle with Diagnosticable {
     this.textAlign,
     this.textSpacing,
     this.textColor,
+    this.textOverflow,
+    this.textSoftWrap,
+    this.textWidthBasis,
     this.iconColor,
     this.titleStyle,
     this.subtitleStyle,
     this.secondaryStyle,
+    this.titleColor,
+    this.subtitleColor,
+    this.titleMaxLines,
+    this.subtitleMaxLines,
   })  : padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         spacing = 10.0,
         titleSize = 13.0,
@@ -172,12 +228,19 @@ class WxListTileStyle with Diagnosticable {
         textAlign = other?.textAlign,
         textSpacing = other?.textSpacing,
         textColor = other?.textColor,
+        textOverflow = other?.textOverflow,
+        textSoftWrap = other?.textSoftWrap,
+        textWidthBasis = other?.textWidthBasis,
         iconColor = other?.iconColor,
         titleStyle = other?.titleStyle,
         subtitleStyle = other?.subtitleStyle,
         secondaryStyle = other?.secondaryStyle,
         titleSize = other?.titleSize,
-        subtitleSize = other?.subtitleSize;
+        subtitleSize = other?.subtitleSize,
+        titleColor = other?.titleColor,
+        subtitleColor = other?.subtitleColor,
+        titleMaxLines = other?.titleMaxLines,
+        subtitleMaxLines = other?.subtitleMaxLines;
 
   /// Creates a copy of this [WxListTileStyle] but with
   /// the given fields replaced with the new values.
@@ -193,12 +256,19 @@ class WxListTileStyle with Diagnosticable {
     TextAlign? textAlign,
     double? textSpacing,
     Color? textColor,
+    TextOverflow? textOverflow,
+    bool? textSoftWrap,
+    TextWidthBasis? textWidthBasis,
     Color? iconColor,
     TextStyle? titleStyle,
     TextStyle? subtitleStyle,
     TextStyle? secondaryStyle,
     double? titleSize,
     double? subtitleSize,
+    Color? titleColor,
+    Color? subtitleColor,
+    int? titleMaxLines,
+    int? subtitleMaxLines,
   }) {
     return WxListTileStyle(
       margin: margin ?? this.margin,
@@ -212,12 +282,19 @@ class WxListTileStyle with Diagnosticable {
       textAlign: textAlign ?? this.textAlign,
       textSpacing: textSpacing ?? this.textSpacing,
       textColor: textColor ?? this.textColor,
+      textOverflow: textOverflow ?? this.textOverflow,
+      textSoftWrap: textSoftWrap ?? this.textSoftWrap,
+      textWidthBasis: textWidthBasis ?? this.textWidthBasis,
       iconColor: iconColor ?? this.iconColor,
       titleStyle: titleStyle ?? this.titleStyle,
       subtitleStyle: subtitleStyle ?? this.subtitleStyle,
       secondaryStyle: secondaryStyle ?? this.secondaryStyle,
       titleSize: titleSize ?? this.titleSize,
       subtitleSize: subtitleSize ?? this.subtitleSize,
+      titleColor: titleColor ?? this.titleColor,
+      subtitleColor: subtitleColor ?? this.subtitleColor,
+      titleMaxLines: titleMaxLines ?? this.titleMaxLines,
+      subtitleMaxLines: subtitleMaxLines ?? this.subtitleMaxLines,
     );
   }
 
@@ -239,12 +316,19 @@ class WxListTileStyle with Diagnosticable {
       textAlign: other.textAlign,
       textSpacing: other.textSpacing,
       textColor: other.textColor,
+      textOverflow: other.textOverflow,
+      textSoftWrap: other.textSoftWrap,
+      textWidthBasis: other.textWidthBasis,
       iconColor: other.iconColor,
       titleStyle: other.titleStyle,
       subtitleStyle: other.subtitleStyle,
       secondaryStyle: other.secondaryStyle,
       titleSize: other.titleSize,
       subtitleSize: other.subtitleSize,
+      titleColor: other.titleColor,
+      subtitleColor: other.subtitleColor,
+      titleMaxLines: other.titleMaxLines,
+      subtitleMaxLines: other.subtitleMaxLines,
     );
   }
 
@@ -267,12 +351,19 @@ class WxListTileStyle with Diagnosticable {
       textAlign: lerpEnum(a?.textAlign, b?.textAlign, t),
       textSpacing: lerpDouble(a?.textSpacing, b?.textSpacing, t),
       textColor: Color.lerp(a?.textColor, b?.textColor, t),
+      textOverflow: lerpEnum(a?.textOverflow, b?.textOverflow, t),
+      textSoftWrap: lerpEnum(a?.textSoftWrap, b?.textSoftWrap, t),
+      textWidthBasis: lerpEnum(a?.textWidthBasis, b?.textWidthBasis, t),
       iconColor: Color.lerp(a?.iconColor, b?.iconColor, t),
       titleStyle: TextStyle.lerp(a?.titleStyle, b?.titleStyle, t),
       subtitleStyle: TextStyle.lerp(a?.subtitleStyle, b?.subtitleStyle, t),
       secondaryStyle: TextStyle.lerp(a?.secondaryStyle, b?.secondaryStyle, t),
       titleSize: lerpDouble(a?.titleSize, b?.titleSize, t),
       subtitleSize: lerpDouble(a?.subtitleSize, b?.subtitleSize, t),
+      titleColor: Color.lerp(a?.titleColor, b?.titleColor, t),
+      subtitleColor: Color.lerp(a?.subtitleColor, b?.subtitleColor, t),
+      titleMaxLines: lerpInt(a?.titleMaxLines, b?.titleMaxLines, t),
+      subtitleMaxLines: lerpInt(a?.subtitleMaxLines, b?.subtitleMaxLines, t),
     );
   }
 
@@ -288,12 +379,19 @@ class WxListTileStyle with Diagnosticable {
         'textAlign': textAlign,
         'textSpacing': textSpacing,
         'textColor': textColor,
+        'textOverflow': textOverflow,
+        'textSoftWrap': textSoftWrap,
+        'textWidthBasis': textWidthBasis,
         'iconColor': iconColor,
         'titleStyle': titleStyle,
         'subtitleStyle': subtitleStyle,
         'secondaryStyle': secondaryStyle,
         'titleSize': titleSize,
         'subtitleSize': subtitleSize,
+        'titleColor': titleColor,
+        'subtitleColor': subtitleColor,
+        'titleMaxLines': titleMaxLines,
+        'subtitleMaxLines': subtitleMaxLines,
       };
 
   @override
