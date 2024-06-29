@@ -10,14 +10,14 @@ class WxTextTile extends StatelessWidget {
     this.spacing,
     this.margin,
     this.align,
-    this.style,
-    required this.title,
+    this.color,
     this.titleStyle,
     this.titleSize,
-    this.subtitle,
     this.subtitleStyle,
     this.subtitleSize,
-    this.textColor,
+    this.style,
+    required this.title,
+    this.subtitle,
   });
 
   /// {@macro WxTextTile.spacing}
@@ -29,11 +29,8 @@ class WxTextTile extends StatelessWidget {
   /// {@macro WxTextTile.align}
   final TextAlign? align;
 
-  /// The style to be applied
-  final WxTextTileStyle? style;
-
-  /// The primary content
-  final Widget title;
+  /// {@macro WxTextTile.color}
+  final Color? color;
 
   /// {@macro WxTextTile.titleStyle}
   final TextStyle? titleStyle;
@@ -41,28 +38,31 @@ class WxTextTile extends StatelessWidget {
   /// {@macro WxTextTile.titleSize}
   final double? titleSize;
 
-  /// Additional content displayed below the title.
-  final Widget? subtitle;
-
   /// {@macro WxTextTile.subtitleStyle}
   final TextStyle? subtitleStyle;
 
   /// {@macro WxTextTile.subtitleSize}
   final double? subtitleSize;
 
-  /// {@macro WxTextTile.textColor}
-  final Color? textColor;
+  /// The style to be applied
+  final WxTextTileStyle? style;
+
+  /// The primary content
+  final Widget title;
+
+  /// Additional content displayed below the title.
+  final Widget? subtitle;
 
   WxTextTileStyle get effectiveStyle {
     return WxTextTileStyle.from(style).copyWith(
       spacing: spacing,
       margin: margin,
       align: align,
+      color: color,
       titleStyle: titleStyle,
       titleSize: titleSize,
       subtitleStyle: subtitleStyle,
       subtitleSize: subtitleSize,
-      textColor: textColor,
     );
   }
 
@@ -109,7 +109,7 @@ class WxTextTile extends StatelessWidget {
     }
     final titleText = DefaultTextStyle.merge(
       style: effectiveTitleStyle?.copyWith(
-        color: themedStyle.textColor,
+        color: themedStyle.color,
         fontSize: themedStyle.titleSize,
       ),
       textAlign: themedStyle.align,
@@ -127,7 +127,7 @@ class WxTextTile extends StatelessWidget {
       }
       subtitleText = DefaultTextStyle.merge(
         style: effectiveSubtitleStyle?.copyWith(
-          color: themedStyle.textColor,
+          color: themedStyle.color,
           fontSize: themedStyle.subtitleSize,
         ),
         textAlign: themedStyle.align,
