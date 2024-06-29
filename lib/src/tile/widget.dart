@@ -13,7 +13,7 @@ class WxTile extends StatelessWidget {
     this.justify,
     this.inline,
     this.childWrap,
-    this.spacingEnforced,
+    this.adaptiveSpacing,
     this.spacing,
     this.margin,
     this.style,
@@ -37,8 +37,8 @@ class WxTile extends StatelessWidget {
   /// {@macro WxTile.childWrap}
   final bool? childWrap;
 
-  /// {@macro WxTile.spacingEnforced}
-  final bool? spacingEnforced;
+  /// {@macro WxTile.adaptiveSpacing}
+  final bool? adaptiveSpacing;
 
   /// {@macro WxTile.spacing}
   final double? spacing;
@@ -66,7 +66,7 @@ class WxTile extends StatelessWidget {
           direction: direction,
           margin: margin,
           spacing: spacing,
-          spacingEnforced: spacingEnforced,
+          adaptiveSpacing: adaptiveSpacing,
           align: align,
           justify: justify,
           inline: inline,
@@ -79,7 +79,7 @@ class WxTile extends StatelessWidget {
     final theme = WxTileTheme.of(context);
     final themedStyle = theme.style.merge(effectiveStyle);
 
-    final isSpacingEnforced = themedStyle.spacingEnforced == true;
+    final isSpacingEnforced = themedStyle.adaptiveSpacing == false;
     final isInline = themedStyle.inline == true;
     final isChildExpanded = !isInline && themedStyle.childWrap == false;
 

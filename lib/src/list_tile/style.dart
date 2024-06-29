@@ -21,12 +21,12 @@ class WxListTileStyle with Diagnosticable {
   /// {@endtemplate}
   final double? spacing;
 
-  /// {@template WxListTile.spacingEnforced}
-  /// Determines if spacing should be enforced
+  /// {@template WxListTile.adaptiveSpacing}
+  /// Determines if spacing should not be enforced
   /// between the text and leading/trailing widgets,
   /// even when leading/trailing widgets are absent.
   /// {@endtemplate}
-  final bool? spacingEnforced;
+  final bool? adaptiveSpacing;
 
   /// {@template WxListTile.align}
   /// How the children should be placed along the cross axis.
@@ -100,7 +100,7 @@ class WxListTileStyle with Diagnosticable {
     this.margin,
     this.padding,
     this.spacing,
-    this.spacingEnforced,
+    this.adaptiveSpacing,
     this.align,
     this.justify,
     this.inline,
@@ -124,7 +124,7 @@ class WxListTileStyle with Diagnosticable {
           vertical: 10,
         ),
         spacing = 16.0,
-        spacingEnforced = true,
+        adaptiveSpacing = true,
         align = WxTileAlign.center,
         justify = WxTileJustify.spaceBetween,
         inline = false,
@@ -142,7 +142,7 @@ class WxListTileStyle with Diagnosticable {
   /// Create a [WxListTileStyle] with some reasonable default values.
   const WxListTileStyle.dense({
     this.margin,
-    this.spacingEnforced,
+    this.adaptiveSpacing,
     this.align,
     this.justify,
     this.inline,
@@ -164,7 +164,7 @@ class WxListTileStyle with Diagnosticable {
       : margin = other?.margin,
         padding = other?.padding,
         spacing = other?.spacing,
-        spacingEnforced = other?.spacingEnforced,
+        adaptiveSpacing = other?.adaptiveSpacing,
         align = other?.align,
         justify = other?.justify,
         inline = other?.inline,
@@ -185,7 +185,7 @@ class WxListTileStyle with Diagnosticable {
     EdgeInsetsGeometry? margin,
     EdgeInsetsGeometry? padding,
     double? spacing,
-    bool? spacingEnforced,
+    bool? adaptiveSpacing,
     WxTileAlign? align,
     WxTileJustify? justify,
     bool? inline,
@@ -204,7 +204,7 @@ class WxListTileStyle with Diagnosticable {
       margin: margin ?? this.margin,
       padding: padding ?? this.padding,
       spacing: spacing ?? this.spacing,
-      spacingEnforced: spacingEnforced ?? this.spacingEnforced,
+      adaptiveSpacing: adaptiveSpacing ?? this.adaptiveSpacing,
       align: align ?? this.align,
       justify: justify ?? this.justify,
       inline: inline ?? this.inline,
@@ -231,7 +231,7 @@ class WxListTileStyle with Diagnosticable {
       margin: other.margin,
       padding: other.padding,
       spacing: other.spacing,
-      spacingEnforced: other.spacingEnforced,
+      adaptiveSpacing: other.adaptiveSpacing,
       align: other.align,
       justify: other.justify,
       inline: other.inline,
@@ -259,7 +259,7 @@ class WxListTileStyle with Diagnosticable {
       margin: EdgeInsetsGeometry.lerp(a?.margin, b?.margin, t),
       padding: EdgeInsetsGeometry.lerp(a?.padding, b?.padding, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
-      spacingEnforced: lerpBool(a?.spacingEnforced, b?.spacingEnforced, t),
+      adaptiveSpacing: lerpBool(a?.adaptiveSpacing, b?.adaptiveSpacing, t),
       align: lerpEnum(a?.align, b?.align, t),
       justify: lerpEnum(a?.justify, b?.justify, t),
       inline: lerpBool(a?.inline, b?.inline, t),
@@ -280,7 +280,7 @@ class WxListTileStyle with Diagnosticable {
         'margin': margin,
         'padding': padding,
         'spacing': spacing,
-        'spacingEnforced': spacingEnforced,
+        'adaptiveSpacing': adaptiveSpacing,
         'align': align,
         'justify': justify,
         'inline': inline,

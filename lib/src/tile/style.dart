@@ -21,12 +21,12 @@ class WxTileStyle with Diagnosticable {
   /// {@endtemplate}
   final double? spacing;
 
-  /// {@template WxTile.spacingEnforced}
-  /// Determines if spacing should be enforced
+  /// {@template WxTile.adaptiveSpacing}
+  /// Determines if spacing should not be enforced
   /// between the child and leading/trailing widgets,
   /// even when leading/trailing widgets are absent.
   /// {@endtemplate}
-  final bool? spacingEnforced;
+  final bool? adaptiveSpacing;
 
   /// {@template WxTile.align}
   /// How the children should be placed along the cross axis.
@@ -53,7 +53,7 @@ class WxTileStyle with Diagnosticable {
     this.direction,
     this.margin,
     this.spacing,
-    this.spacingEnforced,
+    this.adaptiveSpacing,
     this.align,
     this.justify,
     this.inline,
@@ -65,7 +65,7 @@ class WxTileStyle with Diagnosticable {
       : direction = Axis.horizontal,
         margin = EdgeInsets.zero,
         spacing = 0.0,
-        spacingEnforced = false,
+        adaptiveSpacing = false,
         align = WxTileAlign.center,
         justify = WxTileJustify.start,
         inline = true,
@@ -76,7 +76,7 @@ class WxTileStyle with Diagnosticable {
       : direction = other?.direction,
         margin = other?.margin,
         spacing = other?.spacing,
-        spacingEnforced = other?.spacingEnforced,
+        adaptiveSpacing = other?.adaptiveSpacing,
         align = other?.align,
         justify = other?.justify,
         inline = other?.inline,
@@ -88,7 +88,7 @@ class WxTileStyle with Diagnosticable {
     Axis? direction,
     EdgeInsetsGeometry? margin,
     double? spacing,
-    bool? spacingEnforced,
+    bool? adaptiveSpacing,
     WxTileAlign? align,
     WxTileJustify? justify,
     bool? inline,
@@ -98,7 +98,7 @@ class WxTileStyle with Diagnosticable {
       direction: direction ?? this.direction,
       margin: margin ?? this.margin,
       spacing: spacing ?? this.spacing,
-      spacingEnforced: spacingEnforced ?? this.spacingEnforced,
+      adaptiveSpacing: adaptiveSpacing ?? this.adaptiveSpacing,
       align: align ?? this.align,
       justify: justify ?? this.justify,
       inline: inline ?? this.inline,
@@ -116,7 +116,7 @@ class WxTileStyle with Diagnosticable {
       direction: other.direction,
       margin: other.margin,
       spacing: other.spacing,
-      spacingEnforced: other.spacingEnforced,
+      adaptiveSpacing: other.adaptiveSpacing,
       align: other.align,
       justify: other.justify,
       inline: other.inline,
@@ -131,7 +131,7 @@ class WxTileStyle with Diagnosticable {
       direction: lerpEnum(a?.direction, b?.direction, t),
       margin: EdgeInsetsGeometry.lerp(a?.margin, b?.margin, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
-      spacingEnforced: lerpBool(a?.spacingEnforced, b?.spacingEnforced, t),
+      adaptiveSpacing: lerpBool(a?.adaptiveSpacing, b?.adaptiveSpacing, t),
       align: lerpEnum(a?.align, b?.align, t),
       justify: lerpEnum(a?.justify, b?.justify, t),
       inline: lerpBool(a?.inline, b?.inline, t),
@@ -143,7 +143,7 @@ class WxTileStyle with Diagnosticable {
         'direction': direction,
         'margin': margin,
         'spacing': spacing,
-        'spacingEnforced': spacingEnforced,
+        'adaptiveSpacing': adaptiveSpacing,
         'align': align,
         'justify': justify,
         'inline': inline,

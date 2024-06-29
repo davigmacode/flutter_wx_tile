@@ -18,7 +18,7 @@ class WxListTile extends StatelessWidget {
     this.margin,
     this.padding,
     this.spacing,
-    this.spacingEnforced,
+    this.adaptiveSpacing,
     this.align,
     this.justify,
     this.inline,
@@ -56,7 +56,7 @@ class WxListTile extends StatelessWidget {
   final double? spacing;
 
   /// {@macro WxListTile.spacingEnforced}
-  final bool? spacingEnforced;
+  final bool? adaptiveSpacing;
 
   /// {@macro WxListTile.align}
   final WxTileAlign? align;
@@ -103,7 +103,7 @@ class WxListTile extends StatelessWidget {
       margin: margin,
       padding: padding,
       spacing: spacing,
-      spacingEnforced: spacingEnforced,
+      adaptiveSpacing: adaptiveSpacing,
       align: align,
       justify: justify,
       inline: inline,
@@ -167,7 +167,7 @@ class WxListTile extends StatelessWidget {
           direction: Axis.horizontal,
           margin: themedStyle.padding,
           spacing: themedStyle.spacing,
-          spacingEnforced: themedStyle.spacingEnforced,
+          adaptiveSpacing: themedStyle.adaptiveSpacing,
           align: themedStyle.align,
           justify: themedStyle.justify,
           inline: themedStyle.inline,
@@ -234,7 +234,7 @@ class WxInlineTile extends WxListTile {
     super.margin,
     super.padding,
     super.spacing,
-    super.spacingEnforced,
+    super.adaptiveSpacing,
     super.align,
     super.justify,
     super.textWrap,

@@ -104,7 +104,7 @@ class WxTextTile extends StatelessWidget {
   }
 
   /// [CrossAxisAlignment] from [align]
-  CrossAxisAlignment getCrossAxisAlignment(BuildContext context) {
+  CrossAxisAlignment getAlign(BuildContext context) {
     final direction = Directionality.of(context);
     switch (effectiveStyle.align) {
       case TextAlign.start:
@@ -181,13 +181,13 @@ class WxTextTile extends StatelessWidget {
     }
 
     return WxTile(
-      direction: Axis.vertical,
-      justify: MainAxisAlignment.start,
       inline: true,
-      spacingEnforced: false,
+      direction: Axis.vertical,
+      align: getAlign(context),
+      justify: MainAxisAlignment.start,
+      adaptiveSpacing: true,
       spacing: themedStyle.spacing,
       margin: themedStyle.margin,
-      align: getCrossAxisAlignment(context),
       trailing: subtitleText,
       child: titleText,
     );
