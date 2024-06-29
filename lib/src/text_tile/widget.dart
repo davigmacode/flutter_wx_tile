@@ -16,10 +16,12 @@ class WxTextTile extends StatelessWidget {
     this.widthBasis,
     this.titleStyle,
     this.titleColor,
+    this.titleWeight,
     this.titleSize,
     this.titleMaxLines,
     this.subtitleStyle,
     this.subtitleColor,
+    this.subtitleWeight,
     this.subtitleSize,
     this.subtitleMaxLines,
     this.style,
@@ -54,6 +56,9 @@ class WxTextTile extends StatelessWidget {
   /// {@macro WxTextTile.titleColor}
   final Color? titleColor;
 
+  /// {@macro WxTextTile.titleWeight}
+  final FontWeight? titleWeight;
+
   /// {@macro WxTextTile.titleSize}
   final double? titleSize;
 
@@ -67,6 +72,9 @@ class WxTextTile extends StatelessWidget {
 
   /// {@macro WxTextTile.subtitleColor}
   final Color? subtitleColor;
+
+  /// {@macro WxTextTile.subtitleWeight}
+  final FontWeight? subtitleWeight;
 
   /// {@macro WxTextTile.subtitleSize}
   final double? subtitleSize;
@@ -94,10 +102,12 @@ class WxTextTile extends StatelessWidget {
       widthBasis: widthBasis,
       titleStyle: titleStyle,
       titleColor: titleColor,
+      titleWeight: titleWeight,
       titleSize: titleSize,
       titleMaxLines: titleMaxLines,
       subtitleStyle: subtitleStyle,
       subtitleColor: subtitleColor,
+      subtitleWeight: subtitleWeight,
       subtitleSize: subtitleSize,
       subtitleMaxLines: subtitleMaxLines,
     );
@@ -148,6 +158,7 @@ class WxTextTile extends StatelessWidget {
       style: effectiveTitleStyle?.copyWith(
         color: themedStyle.titleColor ?? themedStyle.color,
         fontSize: themedStyle.titleSize,
+        fontWeight: themedStyle.titleWeight,
       ),
       textAlign: themedStyle.align,
       textWidthBasis: themedStyle.widthBasis,
@@ -170,6 +181,7 @@ class WxTextTile extends StatelessWidget {
         style: effectiveSubtitleStyle?.copyWith(
           color: themedStyle.subtitleColor ?? themedStyle.color,
           fontSize: themedStyle.subtitleSize,
+          fontWeight: themedStyle.subtitleWeight,
         ),
         textAlign: themedStyle.align,
         textWidthBasis: themedStyle.widthBasis,

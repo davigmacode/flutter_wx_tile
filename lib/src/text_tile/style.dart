@@ -50,6 +50,11 @@ class WxTextTileStyle with Diagnosticable {
   /// {@endtemplate}
   final Color? titleColor;
 
+  /// {@template WxTextTile.titleWeight}
+  /// The font weight to be applied to title.
+  /// {@endtemplate}
+  final FontWeight? titleWeight;
+
   /// {@template WxTextTile.titleSize}
   /// The font size to be applied to title.
   /// {@endtemplate}
@@ -69,6 +74,11 @@ class WxTextTileStyle with Diagnosticable {
   /// The text color to be applied to subtitle.
   /// {@endtemplate}
   final Color? subtitleColor;
+
+  /// {@template WxTextTile.subtitleWeight}
+  /// The font weight to be applied to subtitle.
+  /// {@endtemplate}
+  final FontWeight? subtitleWeight;
 
   /// {@template WxTextTile.subtitleSize}
   /// The font size to be applied to subtitle.
@@ -91,10 +101,12 @@ class WxTextTileStyle with Diagnosticable {
     this.widthBasis,
     this.titleStyle,
     this.titleColor,
+    this.titleWeight,
     this.titleSize,
     this.titleMaxLines,
     this.subtitleStyle,
     this.subtitleColor,
+    this.subtitleWeight,
     this.subtitleSize,
     this.subtitleMaxLines,
   });
@@ -110,10 +122,12 @@ class WxTextTileStyle with Diagnosticable {
         widthBasis = null,
         titleStyle = null,
         titleColor = null,
+        titleWeight = null,
         titleSize = null,
         titleMaxLines = null,
         subtitleStyle = null,
         subtitleColor = null,
+        subtitleWeight = null,
         subtitleSize = null,
         subtitleMaxLines = null;
 
@@ -128,10 +142,12 @@ class WxTextTileStyle with Diagnosticable {
         widthBasis = other?.widthBasis,
         titleStyle = other?.titleStyle,
         titleColor = other?.titleColor,
+        titleWeight = other?.titleWeight,
         titleSize = other?.titleSize,
         titleMaxLines = other?.titleMaxLines,
         subtitleStyle = other?.subtitleStyle,
         subtitleColor = other?.subtitleColor,
+        subtitleWeight = other?.subtitleWeight,
         subtitleSize = other?.subtitleSize,
         subtitleMaxLines = other?.subtitleMaxLines;
 
@@ -147,10 +163,12 @@ class WxTextTileStyle with Diagnosticable {
     TextWidthBasis? widthBasis,
     TextStyle? titleStyle,
     Color? titleColor,
+    FontWeight? titleWeight,
     double? titleSize,
     int? titleMaxLines,
     TextStyle? subtitleStyle,
     Color? subtitleColor,
+    FontWeight? subtitleWeight,
     double? subtitleSize,
     int? subtitleMaxLines,
   }) {
@@ -164,10 +182,12 @@ class WxTextTileStyle with Diagnosticable {
       widthBasis: widthBasis ?? this.widthBasis,
       titleStyle: titleStyle ?? this.titleStyle,
       titleColor: titleColor ?? this.titleColor,
+      titleWeight: titleWeight ?? this.titleWeight,
       titleSize: titleSize ?? this.titleSize,
       titleMaxLines: titleMaxLines ?? this.titleMaxLines,
       subtitleStyle: subtitleStyle ?? this.subtitleStyle,
       subtitleColor: subtitleColor ?? this.subtitleColor,
+      subtitleWeight: subtitleWeight ?? this.subtitleWeight,
       subtitleSize: subtitleSize ?? this.subtitleSize,
       subtitleMaxLines: subtitleMaxLines ?? this.subtitleMaxLines,
     );
@@ -189,10 +209,12 @@ class WxTextTileStyle with Diagnosticable {
       widthBasis: other.widthBasis,
       titleStyle: other.titleStyle,
       titleColor: other.titleColor,
+      titleWeight: other.titleWeight,
       titleSize: other.titleSize,
       titleMaxLines: other.titleMaxLines,
       subtitleStyle: other.subtitleStyle,
       subtitleColor: other.subtitleColor,
+      subtitleWeight: other.subtitleWeight,
       subtitleSize: other.subtitleSize,
       subtitleMaxLines: other.subtitleMaxLines,
     );
@@ -215,10 +237,12 @@ class WxTextTileStyle with Diagnosticable {
       widthBasis: lerpEnum(a?.widthBasis, b?.widthBasis, t),
       titleStyle: TextStyle.lerp(a?.titleStyle, b?.titleStyle, t),
       titleColor: Color.lerp(a?.titleColor, b?.titleColor, t),
+      titleWeight: FontWeight.lerp(a?.titleWeight, b?.titleWeight, t),
       titleSize: lerpDouble(a?.titleSize, b?.titleSize, t),
       titleMaxLines: lerpInt(a?.titleMaxLines, b?.titleMaxLines, t),
       subtitleStyle: TextStyle.lerp(a?.subtitleStyle, b?.subtitleStyle, t),
       subtitleColor: Color.lerp(a?.subtitleColor, b?.subtitleColor, t),
+      subtitleWeight: FontWeight.lerp(a?.subtitleWeight, b?.subtitleWeight, t),
       subtitleSize: lerpDouble(a?.subtitleSize, b?.subtitleSize, t),
       subtitleMaxLines: lerpInt(a?.subtitleMaxLines, b?.subtitleMaxLines, t),
     );
@@ -234,10 +258,12 @@ class WxTextTileStyle with Diagnosticable {
         'widthBasis': widthBasis,
         'titleStyle': titleStyle,
         'titleColor': titleColor,
+        'titleWeight': titleWeight,
         'titleSize': titleSize,
         'titleMaxLines': titleMaxLines,
         'subtitleStyle': subtitleStyle,
         'subtitleColor': subtitleColor,
+        'subtitleWeight': subtitleWeight,
         'subtitleSize': subtitleSize,
         'subtitleMaxLines': subtitleMaxLines,
       };

@@ -140,6 +140,16 @@ class WxListTileStyle with Diagnosticable {
   /// {@endtemplate}
   final int? subtitleMaxLines;
 
+  /// {@template WxListTile.titleWeight}
+  /// The font weight to be applied to title.
+  /// {@endtemplate}
+  final FontWeight? titleWeight;
+
+  /// {@template WxListTile.subtitleWeight}
+  /// The font weight to be applied to subtitle.
+  /// {@endtemplate}
+  final FontWeight? subtitleWeight;
+
   /// Create a raw [WxListTileStyle]
   const WxListTileStyle({
     this.margin,
@@ -168,6 +178,8 @@ class WxListTileStyle with Diagnosticable {
     this.subtitleColor,
     this.titleMaxLines,
     this.subtitleMaxLines,
+    this.titleWeight,
+    this.subtitleWeight,
   });
 
   /// Create a [WxListTileStyle] with some reasonable default values.
@@ -200,7 +212,9 @@ class WxListTileStyle with Diagnosticable {
         titleColor = null,
         subtitleColor = null,
         titleMaxLines = null,
-        subtitleMaxLines = null;
+        subtitleMaxLines = null,
+        titleWeight = null,
+        subtitleWeight = null;
 
   /// Create a [WxListTileStyle] with some reasonable default values.
   const WxListTileStyle.dense({
@@ -226,6 +240,8 @@ class WxListTileStyle with Diagnosticable {
     this.subtitleColor,
     this.titleMaxLines,
     this.subtitleMaxLines,
+    this.titleWeight,
+    this.subtitleWeight,
   })  : padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         spacing = 10.0,
         titleSize = 13.0,
@@ -258,7 +274,9 @@ class WxListTileStyle with Diagnosticable {
         titleColor = other?.titleColor,
         subtitleColor = other?.subtitleColor,
         titleMaxLines = other?.titleMaxLines,
-        subtitleMaxLines = other?.subtitleMaxLines;
+        subtitleMaxLines = other?.subtitleMaxLines,
+        titleWeight = other?.titleWeight,
+        subtitleWeight = other?.subtitleWeight;
 
   /// Creates a copy of this [WxListTileStyle] but with
   /// the given fields replaced with the new values.
@@ -289,6 +307,8 @@ class WxListTileStyle with Diagnosticable {
     Color? subtitleColor,
     int? titleMaxLines,
     int? subtitleMaxLines,
+    FontWeight? titleWeight,
+    FontWeight? subtitleWeight,
   }) {
     return WxListTileStyle(
       margin: margin ?? this.margin,
@@ -317,6 +337,8 @@ class WxListTileStyle with Diagnosticable {
       subtitleColor: subtitleColor ?? this.subtitleColor,
       titleMaxLines: titleMaxLines ?? this.titleMaxLines,
       subtitleMaxLines: subtitleMaxLines ?? this.subtitleMaxLines,
+      titleWeight: titleWeight ?? this.titleWeight,
+      subtitleWeight: subtitleWeight ?? this.subtitleWeight,
     );
   }
 
@@ -353,6 +375,8 @@ class WxListTileStyle with Diagnosticable {
       subtitleColor: other.subtitleColor,
       titleMaxLines: other.titleMaxLines,
       subtitleMaxLines: other.subtitleMaxLines,
+      titleWeight: other.titleWeight,
+      subtitleWeight: other.subtitleWeight,
     );
   }
 
@@ -390,6 +414,8 @@ class WxListTileStyle with Diagnosticable {
       subtitleColor: Color.lerp(a?.subtitleColor, b?.subtitleColor, t),
       titleMaxLines: lerpInt(a?.titleMaxLines, b?.titleMaxLines, t),
       subtitleMaxLines: lerpInt(a?.subtitleMaxLines, b?.subtitleMaxLines, t),
+      titleWeight: FontWeight.lerp(a?.titleWeight, b?.titleWeight, t),
+      subtitleWeight: FontWeight.lerp(a?.subtitleWeight, b?.subtitleWeight, t),
     );
   }
 
@@ -420,6 +446,8 @@ class WxListTileStyle with Diagnosticable {
         'subtitleColor': subtitleColor,
         'titleMaxLines': titleMaxLines,
         'subtitleMaxLines': subtitleMaxLines,
+        'titleWeight': titleWeight,
+        'subtitleWeight': subtitleWeight,
       };
 
   @override

@@ -38,6 +38,8 @@ class WxListTile extends StatelessWidget {
     this.subtitleColor,
     this.titleMaxLines,
     this.subtitleMaxLines,
+    this.titleWeight,
+    this.subtitleWeight,
     this.titleStyle,
     this.subtitleStyle,
     this.secondaryStyle,
@@ -126,6 +128,12 @@ class WxListTile extends StatelessWidget {
   /// {@macro WxListTile.subtitleMaxLines}
   final int? subtitleMaxLines;
 
+  /// {@macro WxListTile.titleWeight}
+  final FontWeight? titleWeight;
+
+  /// {@macro WxListTile.subtitleWeight}
+  final FontWeight? subtitleWeight;
+
   /// {@macro WxListTile.titleStyle}
   final TextStyle? titleStyle;
 
@@ -167,6 +175,8 @@ class WxListTile extends StatelessWidget {
       subtitleColor: subtitleColor,
       titleMaxLines: titleMaxLines,
       subtitleMaxLines: subtitleMaxLines,
+      titleWeight: titleWeight,
+      subtitleWeight: subtitleWeight,
       titleStyle: titleStyle,
       subtitleStyle: subtitleStyle,
       secondaryStyle: secondaryStyle,
@@ -249,6 +259,8 @@ class WxListTile extends StatelessWidget {
             subtitleColor: themedStyle.subtitleColor,
             titleMaxLines: themedStyle.titleMaxLines,
             subtitleMaxLines: themedStyle.subtitleMaxLines,
+            titleWeight: themedStyle.titleWeight,
+            subtitleWeight: themedStyle.subtitleWeight,
           ),
         ),
       ),
